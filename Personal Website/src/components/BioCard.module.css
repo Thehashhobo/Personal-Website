@@ -1,0 +1,106 @@
+/* Card Container */
+.card {
+    background-color: #fcf0e5;
+    padding: 30px;
+    padding-bottom: 0;
+    border-radius: 0px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; 
+    box-shadow: 0 4px 8px rgba(0.2, 0.2, 0.2, 0.2);
+    height: 650px;
+  }
+  
+  /* Profile Image Container */
+.imageContainer {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: blue;
+    margin-top: 30px;
+  }
+  
+
+.profileImage {
+    width:100%;
+  }
+  
+
+  .name {
+    font-family: "Poppins", sans-serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #000;
+    margin: 10px 0;
+  }
+  
+ 
+  .underline {
+    width: 50px;
+    height: 3px;
+    background-color: blue;
+    margin-bottom: 15px;
+  }
+
+
+  
+  .role {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.2rem;
+    color: #333;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+  }
+
+  .socialFooter {
+    height: 3.5rem;
+    width: 100%;
+    background-color: white;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0; /* Sticks to the bottom */
+    left: 0;
+    justify-items: center;
+    align-items: center;
+}
+  
+  /* Social Icons */
+.socialIcons {
+    display: flex;
+    width: 100%;
+    gap: 25px;
+    justify-content: center;
+    align-content: center;
+}
+  
+.socialIcons a {
+    color: black;
+    transition: 0.3s ease-in-out;
+    scale: 1.4;
+    margin-top: 8px;
+}
+
+  
+  .socialIcons a:hover {
+    color: blue;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .card {
+        max-width: none;
+        height: 550px;
+    }
+  
+    .name {
+      font-size: 1.2rem;
+    }
+  
+    .role {
+      font-size: 0.9rem;
+    }
+  }
+  

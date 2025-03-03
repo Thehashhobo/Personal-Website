@@ -1,0 +1,46 @@
+.container {
+    text-align: center;
+    padding: 40px;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center;
+    gap: 20px; /* Space between elements */
+  }
+  
+  .title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .pdfViewer {
+    width: 150vw;
+    max-width: 1200px;
+    height: 800px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .downloadButton {
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: black;
+    border: 3px solid black;
+    padding: 10px 20px;
+    background: transparent;
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+    box-shadow: 0 4px 8px rgba(0.2, 0.2, 0.2, 0.2);
+  }
+  
+  .downloadButton:hover {
+    background-color: #096dd9;
+  }
+  
+  @media (max-width: 768px) {
+    .pdfViewer {
+        width: 98vw;
+      }
+}
