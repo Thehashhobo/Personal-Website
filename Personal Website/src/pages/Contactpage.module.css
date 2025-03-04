@@ -17,4 +17,14 @@
 
 .contact-container {
     min-height: 100vh;
+    
+}
+
+@media (max-width: 768px) {
+    .contact-container {
+        min-width: 96vw;
+        align-self: center;
+        justify-self: center;
+        
+    }
 }

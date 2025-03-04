@@ -3,7 +3,7 @@ import { useSpring, animated } from "@react-spring/web";
 import { Link } from "react-router-dom";
 import styles from "./Aboutpage.module.css";
 import ProfileCard from "../components/BioCard"; // Import the Profile Card component
-import my_photo from "../assets/My_photo.png"; // Import your image
+import my_photo from "../assets/My_photo.webp"; // Import your image
 
 const Aboutpage: React.FC = () => {
   const [hasLoaded, setHasLoaded] = useState(false);

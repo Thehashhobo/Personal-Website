@@ -2,10 +2,10 @@ import React from 'react';
 import styles from './Projectpage.module.css'; 
 import AnimatedCard from "../components/AnimatedCard";
 import '../typography.css';
-import c1 from '../assets/C11.png';
-import c2 from '../assets/C21.png';
-import c3 from '../assets/C31.png';
-import c4 from '../assets/C4.png';
+import c1 from '../assets/C11.webp';
+import c2 from '../assets/C21.webp';
+import c3 from '../assets/C31.webp';
+import c4 from '../assets/C4.webp';
 import c5 from '../assets/C5.webp';
 const Contracts = [
   {
@@ -48,7 +48,7 @@ const AProjects = [
     link: "https://barnyard-buddies.netlify.app/",
   },
   {
-    title: "UofTeams Collarboration Platform",
+    title: "Collarboration Platform",
     description: "UofTeams is a collaborative platform designed to connect University of Toronto students by enabling them to create and engage with time-sensitive posts for extracurricular opportunities. Through strong teamwork and communication, the platform was built using OOP principles to ensure modularity and scalability.",
     image: c5,
     technologies: ["Java"],
