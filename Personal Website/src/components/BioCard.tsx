@@ -26,10 +26,10 @@ const BioCard: React.FC<BioCardProps> = ({ image, name, role }) => {
       {/* Social Footer with White Background */}
       <div className={styles.socialFooter}>
         <div className={styles.socialIcons}>
-          <a href="#" target="_blank"><LinkedinFilled style={{ fontSize: '24px', color: '#000' }} /></a>
-          <a href="#" target="_blank"><GithubFilled style={{ fontSize: '24px', color: '#000' }} /></a>
-          <a href="#" target="_blank"><InstagramFilled style={{ fontSize: '24px', color: '#000' }} /></a>
-          <a href="#" target="_blank"><FacebookFilled style={{ fontSize: '24px', color: '#000' }} /></a>
+          <a href="https://www.linkedin.com/in/jerry-wang-a763571a0/" target="_blank"><LinkedinFilled style={{ fontSize: '24px', color: '#000' }} /></a>
+          <a href="https://github.com/Thehashhobo" target="_blank"><GithubFilled style={{ fontSize: '24px', color: '#000' }} /></a>
+          <a href="https://www.instagram.com/jerry_w_02/" target="_blank"><InstagramFilled style={{ fontSize: '24px', color: '#000' }} /></a>
+          <a href="https://www.facebook.com/profile.php?id=100016401705344" target="_blank"><FacebookFilled style={{ fontSize: '24px', color: '#000' }} /></a>
         </div>
       </div>
     </div>

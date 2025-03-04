@@ -2,29 +2,58 @@ import React from 'react';
 import styles from './Projectpage.module.css'; 
 import AnimatedCard from "../components/AnimatedCard";
 import '../typography.css';
-import c1_1 from '../assets/C11.png';
-import c1_2 from '../assets/C11.png';
+import c1 from '../assets/C11.png';
+import c2 from '../assets/C21.png';
+import c3 from '../assets/C31.png';
+import c4 from '../assets/C4.png';
+import c5 from '../assets/C5.webp';
 const Contracts = [
   {
-    title: "Recipe Analyzer",
+    title: "Yacht Services Website",
     description: "A website built from the ground up to drive sales for an emerging yacht management company, showcasing an entrepreneurial mindset by enhancing outreach and streamlining the booking process for maximum client engagement.",
-    image: c1_1,
-    image2: c1_2,
+    image: c1,
     technologies: ["Node", "React", "typescript", "HTML", "CSS"],
     points: ["Collaborated closely with client to translate design requirements into a functional site. Increasing Business traffic by 17%", "Designed and developed a responsive marketing webpage for a yacht management company, enhancing online presence and client acquisition using React, TypeScript, Node.js, and AntDesign UI library.", "Deployed and hosted the site on Netlify, ensuring a CI/CD workflow for seamless updates and version control."],
-    link: "https://your-recipe-project.com",
+    link: "https://oceanwavevip.com/",
   }
 ];
 
 const PProjects = [
   {
-    title: "Recipe Analyzer",
-    description: "A website built from the ground up to drive sales for an emerging yacht management company, showcasing an entrepreneurial mindset by enhancing outreach and streamlining the booking process for maximum client engagement.",
-    image: c1_1,
-    image2: c1_2,
-    technologies: ["Node", "React", "typescript", "HTML", "CSS"],
-    points: ["Collaborated closely with client to translate design requirements into a functional site. Increasing Business traffic by 17%", "Designed and developed a responsive marketing webpage for a yacht management company, enhancing online presence and client acquisition using React, TypeScript, Node.js, and AntDesign UI library.", "Deployed and hosted the site on Netlify, ensuring a CI/CD workflow for seamless updates and version control."],
-    link: "https://your-recipe-project.com",
+    title: "Recipe Data Analyzer",
+    description: "A data analysis project built from the ground up, focused on extracting and structuring online data for efficient storage and retrieval. Designed with a product-focused mindset, the project included exploratory data analysis (EDA) to uncover key insights, identify data quality issues, and lay the foundation for model development.",
+    image: c2,
+    technologies: ["Python", "Jupyter", "SQL", "Pandas", ],
+    points: ["Developed a web scraper using Python and BeautifulSoup to collect, Clean and serialize recipe data from variouswebsites for analysis.", "Designed and executed complex SQL queries to extract, analyze, and optimize data insights, leveraging efficient indexing, joins, and subqueries for high-performance lookups.", "Performed EDA using Pandas, Seaborn, and Matplotlib to analyze ingredient trends. Identified data quality issues that impacted modeling, preprocessing data and engineered features for future improvements."],
+    link: "https://github.com/Thehashhobo/Recipe-Data-Analysis",
+  },
+  {
+    title: "Cell Growth Simulation",
+    description: "A web-based interactive cell simulation engineered to push browser performance limits through a highly optimized reactive state-based architecture and rendering approach. Designed to efficiently manage and render 100 million interactive cells, this project tackles complex technical optimization challenges, and real-time state updates for seamless performance at scale.",
+    image: c3,
+    technologies: ["Algorithm Design", "TypeScript", "Graphics Rendering" ],
+    points: ["Developed an interactive web simulation capable of handling up to 10 million cells, demonstrating large-scale data optimization.", "Implemented a granular rendering approach and a reactive state architecture, reducing redundant computations and enabling large-scale, real-time updates."],
+    link: "https://thehashhobo.github.io/Cell-Growth-Simulation/",
+    extraLink: "https://thehashhobo.github.io/Cell-Growth-Simulation-V2/"
+  }
+];
+
+const AProjects = [
+  {
+    title: "Pet adoption site",
+    description: "Led a team of four developers to build a full-stack web application from scratch, driving development with Agile methodologies. Organized weekly meetings to align goals, address challenges, and ensure progress. Took initiative in decision-making, balancing technical execution with user needs for a scalable product.",
+    image: c4,
+    technologies: ["JavaScript", "Django", "React", "SQL", "Agile"],
+    points: ["Developed a full-stack web application with 15 distinct pages using Agile methodologies, enabling users to post, search,filter, and apply for pet adoptions.", "Employed Django REST Framework for a scalable back end; integrated React for efficient frontend rendering.", "Deployed the back end on Heroku and front end on Netlify, gaining hands-on experience with CI/CD pipelines."],
+    link: "https://barnyard-buddies.netlify.app/",
+  },
+  {
+    title: "UofTeams Collarboration Platform",
+    description: "UofTeams is a collaborative platform designed to connect University of Toronto students by enabling them to create and engage with time-sensitive posts for extracurricular opportunities. Through strong teamwork and communication, the platform was built using OOP principles to ensure modularity and scalability.",
+    image: c5,
+    technologies: ["Java"],
+    points: ["Designed and implemented a modular architecture following OOP principles, ensuring scalability and ease of feature expansion."],
+    link: "https://github.com/CSC207-2022F-UofT/course-project-uofteams",
   }
 ];
 
@@ -43,7 +72,6 @@ const Projectpage: React.FC = () => {
             title={project.title}
             description={project.description}
             image={project.image}
-            image2={project.image2}
             technologies={project.technologies}
             points={project.points}
             link={project.link}
@@ -61,7 +89,24 @@ const Projectpage: React.FC = () => {
             title={project.title}
             description={project.description}
             image={project.image}
-            image2={project.image2}
+            technologies={project.technologies}
+            points={project.points}
+            link={project.link}
+            extraLink={project.extraLink}
+          />
+        ))}
+      </div>
+      <div className={styles.subtitleContainer}>
+        <h3 className={styles.subtitle}>Academic Works</h3>
+        <hr className={styles.line} />
+      </div>
+      <div className={styles.grid}>
+        {AProjects.map((project, index) => (
+          <AnimatedCard
+            key={index}
+            title={project.title}
+            description={project.description}
+            image={project.image}
             technologies={project.technologies}
             points={project.points}
             link={project.link}

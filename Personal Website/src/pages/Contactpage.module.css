@@ -1,0 +1,20 @@
+.greet-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 3rem;
+}
+
+.emoji{
+    font-size: 2.4rem;
+    margin-right: 1rem;
+}
+.title {
+
+    font-size: 2.4rem;
+}
+
+.contact-container {
+    min-height: 100vh;
+}

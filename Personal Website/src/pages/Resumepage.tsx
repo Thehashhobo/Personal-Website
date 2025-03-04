@@ -13,7 +13,7 @@ const Resumepage: React.FC = () => {
 
       {/* Download Button */}
       <a href={resumeUrl} download="Junan_Wang_Swe.pdf" className={styles.downloadButton}>
-        Download Resume
+        Download Résumé
       </a>
     </div>
   );

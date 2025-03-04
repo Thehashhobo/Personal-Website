@@ -8,7 +8,7 @@ import Projectpage from './pages/Projectpage';
 import Contactpage from './pages/Contactpage';
 
 import ScrollToTop from './components/ScrollToTop';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route,} from 'react-router-dom';
 
 
 

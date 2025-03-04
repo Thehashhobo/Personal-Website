@@ -1,0 +1,87 @@
+.form {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 3rem;
+    border: 2px solid black;
+    border-spacing: 3rem;
+  }
+  
+  .inputGroup {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+  }
+  
+  .inputField {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  
+  label {
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  
+  input:focus, textarea:focus {
+    border-bottom: 2px solid black;
+  }
+  
+  textarea {
+    height: 80px;
+    resize: none;
+  }
+  
+  .error {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 5px;
+  }
+  
+  .buttonContainer {
+    display: flex;
+    justify-content: center; /* Centers the button */
+    margin-top: 20px;
+  }
+  
+  .submitButton {
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: black;
+    border: 3px solid black;
+    padding: 10px 20px;
+    background: transparent;
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .submitButton:hover {
+    background: black;
+    color: white;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .inputGroup {
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+  

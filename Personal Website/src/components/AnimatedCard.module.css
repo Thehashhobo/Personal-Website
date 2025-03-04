@@ -26,7 +26,7 @@
   background: rgba(0, 0, 0, 0.7);
   color: white;
   text-align: center;
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transition: transform 0.1s ease-in-out, opacity 0.1s ease-in-out;
 }
 
 .coverImage {
@@ -35,7 +35,7 @@
   object-fit: scale-down;
   position: absolute;
   z-index: -1;
-  margin-top: 3rem;
+  margin-top: 13rem;
 }
 
 .coverContent {
@@ -101,19 +101,49 @@
   margin-bottom: 10px;
 }
 
-.viewButton {
+.buttonContainer {
+  display: flex;
+  justify-self: center;
+  align-self: center;
+  gap: 10px; /* Space between buttons */
   margin-top: 10px;
-  padding: 8px 16px;
-  background-color: #1890ff;
-  color: white;
+}
+
+.viewButton {
   text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
   font-weight: bold;
-  border-radius: 5px;
-  transition: background 0.3s;
+  color: black;
+  border: 3px solid black;
+  padding: 10px 20px;
+  background: transparent;
+  transition: all 0.3s ease-in-out;
+  display: inline-block;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .viewButton:hover {
-  background-color: #096dd9;
+  background: black;
+    color: white;
+}
+.viewButtonAlt {
+  text-decoration: none;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    border: 3px white;
+    padding: 10px 20px;
+    background: black; /* Opposite of custom-button */
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Adjusted for visibility */
+}
+
+.viewButtonAlt:hover {
+  background: white; /* Opposite of .custom-button hover */
+    color: black;
 }
 
 @media (max-width: 768px) {
@@ -168,10 +198,7 @@
     font-size: 12px;
   }
 
-  .detailImage {
-    max-height: 120px; /* Reduce image size */
-    width: 90%; /* Avoid full width stretching */
-  }
+
 
   .viewButton {
     width: 100%; /* Make button full width */

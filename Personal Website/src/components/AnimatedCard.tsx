@@ -6,13 +6,13 @@ interface AnimatedCardProps {
   title: string;
   description: string;
   image: string;
-  image2: string;
   technologies: string[];
   points: string[]; // Bullet points
   link: string;
+  extraLink?: string;
 }
 
-const AnimatedCard: React.FC<AnimatedCardProps> = ({ title, description, image, image2, technologies, points, link }) => {
+const AnimatedCard: React.FC<AnimatedCardProps> = ({ title, description, image, technologies, points, link, extraLink }) => {
   const [hovered, setHovered] = useState(false);
 
   const coverStyle = useSpring({
@@ -49,9 +49,17 @@ const AnimatedCard: React.FC<AnimatedCardProps> = ({ title, description, image, 
           </ul>
         )}
 
-        <a href={link} className={styles.viewButton} target="_blank" rel="noopener noreferrer">
-          View Project
-        </a>
+        {/* Buttons */}
+        <div className={styles.buttonContainer}>
+          <a href={link} className={styles.viewButton} target="_blank" rel="noopener noreferrer">
+            View Project
+          </a>
+          {extraLink && (
+            <a href={extraLink} className={styles.viewButtonAlt} target="_blank" rel="noopener noreferrer">
+              View Project V2
+            </a>
+          )}
+        </div>
       </div>
     </div>
   );
