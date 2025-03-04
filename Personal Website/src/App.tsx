@@ -8,26 +8,20 @@ import Projectpage from './pages/Projectpage';
 import Contactpage from './pages/Contactpage';
 
 import ScrollToTop from './components/ScrollToTop';
-import { BrowserRouter as Router, Routes, Route,} from 'react-router-dom';
-
-
-
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 
 const App: React.FC = () => {
-
   return (
     <Router>
       <ScrollToTop />
       <Navbar />
-
-        <Routes>
-          <Route path="/" element={<Aboutpage />} />
-          <Route path="/resume" element={<Resumepage />} />
-          <Route path="/Projects" element={<Projectpage />} />
-          <Route path="/Contact" element={<Contactpage />} />
-          {/* <Route path="/trainings" element={<TrainingsPage />} /> */}
-        </Routes>
-        <Footer />
+      <Routes>
+        <Route path="/" element={<Aboutpage />} />
+        <Route path="/resume" element={<Resumepage />} />
+        <Route path="/projects" element={<Projectpage />} />
+        <Route path="/contact" element={<Contactpage />} />
+      </Routes>
+      <Footer />
     </Router>
   );
 };
