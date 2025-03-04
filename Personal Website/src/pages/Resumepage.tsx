@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./Resumepage.module.css";
 
-const resumeUrl = "/Junan_Wang_Swe.pdf"; // Make sure this file is inside the `public/` folder
+const resumeUrl = `${import.meta.env.BASE_URL}Junan_Wang_Swe.pdf`; // Dynamically adjust path
+
 
 const Resumepage: React.FC = () => {
   return (

@@ -13,7 +13,7 @@ const AppFooter: React.FC = () => {
         <Space direction="vertical" size="small" className={styles.footerCopyright}>
             <Text>© {new Date().getFullYear()} by Jerry W.</Text>
             <Text>
-            Powered and secured by <Link href="https://www.netlify.com" target="_blank">Netlify</Link>
+            Powered and secured by <Link href="https://pages.github.com/" target="_blank">Github Pages</Link>
             </Text>
         </Space>
         <Space direction="vertical" align="center">
