@@ -38,7 +38,26 @@ const Navbar: React.FC = () => {
 
   // Dropdown menu for small screens
   const dropdownMenu = (
-    <Menu items={items.map(item => ({ key: item.key, label: item.label }))} />
+      <Menu
+      items={items.map(item => ({
+        key: item.key,
+        label: item.label,
+        style: {
+          fontSize: '18px', // Change text size
+          fontWeight: 'bold', // Make text bold
+          padding: '12px 20px', // Increase spacing
+
+        },
+      }))}
+      style={{
+        backgroundColor: 'white', // Light background
+        borderStyle: 'double', // Double border
+        borderRadius: '0px', // No border radius
+        border: '2px',
+        padding: '10px 0', // Vertical spacing
+        boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.15)', // Shadow effect
+      }}
+    />
   );
 
   return (
@@ -99,7 +118,6 @@ const Navbar: React.FC = () => {
             icon={<MenuOutlined style={{ fontSize: '26px' }} />} // Adjust the icon size
             shape="circle"
             style={{
-              
               width: '50px', 
               height: '50px', 
               fontSize: '24px', 
