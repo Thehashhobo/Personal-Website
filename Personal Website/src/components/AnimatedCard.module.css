@@ -123,6 +123,22 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.disabledButton{
+  text-decoration: none;
+  pointer-events: none;
+  cursor: not-allowed;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: black;
+  border: 3px solid black;
+  padding: 10px 20px;
+  background: transparent;
+  transition: all 0.3s ease-in-out;
+  display: inline-block;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 .viewButton:hover {
   background: black;
     color: white;
