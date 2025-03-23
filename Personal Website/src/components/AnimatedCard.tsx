@@ -10,9 +10,10 @@ interface AnimatedCardProps {
   points: string[]; // Bullet points
   link: string;
   extraLink?: string;
+  disable?: boolean;
 }
 
-const AnimatedCard: React.FC<AnimatedCardProps> = ({ title, description, image, technologies, points, link, extraLink }) => {
+const AnimatedCard: React.FC<AnimatedCardProps> = ({ title, description, image, technologies, points, link, extraLink, disable}) => {
   const [hovered, setHovered] = useState(false);
 
   const coverStyle = useSpring({
@@ -51,9 +52,14 @@ const AnimatedCard: React.FC<AnimatedCardProps> = ({ title, description, image, 
 
         {/* Buttons */}
         <div className={styles.buttonContainer}>
-          <a href={link} className={styles.viewButton} target="_blank" rel="noopener noreferrer">
-            View Project
-          </a>
+        {disable ? (
+          <span className={`${styles.viewButton} ${styles.disabledButton}`}>Coming Soon</span>
+            ) : (
+              <a href={link} className={styles.viewButton} target="_blank" rel="noopener noreferrer">
+                View Project
+              </a>
+            )}
+
           {extraLink && (
             <a href={extraLink} className={styles.viewButtonAlt} target="_blank" rel="noopener noreferrer">
               View Project V2

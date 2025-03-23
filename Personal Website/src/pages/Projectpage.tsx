@@ -7,6 +7,7 @@ import c2 from '../assets/C21.webp';
 import c3 from '../assets/C31.webp';
 import c4 from '../assets/C4.webp';
 import c5 from '../assets/C5.webp';
+import c6 from '../assets/C6.webp';
 const Contracts = [
   {
     title: "Yacht Services Website",
@@ -15,10 +16,23 @@ const Contracts = [
     technologies: ["Node", "React", "typescript", "HTML", "CSS"],
     points: ["Collaborated closely with client to translate design requirements into a functional site. Increasing Business traffic by 17%", "Designed and developed a responsive marketing webpage for a yacht management company, enhancing online presence and client acquisition using React, TypeScript, Node.js, and AntDesign UI library.", "Deployed and hosted the site on Netlify, ensuring a CI/CD workflow for seamless updates and version control."],
     link: "https://oceanwavevip.com/",
+    disable: false,
   }
 ];
 
 const PProjects = [
+  {
+    title: "Double Dating App (In Development)",
+    description: "Conceptualized and developed a cross-platform dating application focused on connecting users through double date experiences. Showcasing both entrepreneurial initiative and full-stack technical execution.",
+    image: c6,
+    technologies: ["React Native", "Typescript", "Expo", "SupaBase", "PostgresSql" ],
+    points: ["Led product validation through targeted user surveys to identify key pain points and desires, transforming insights into actionable features. Combined user-centric design with scalable architecture to create a compelling MVP.",
+      "Building a scalable, feature-rich mobile application using React Native, TypeScript, and Supabase. Implementing real-time chat, dynamic double-profile matching algorithms, and modular architecture optimized for performance and growth.", 
+      "Integrated third-party APIs (e.g., Stream Chat) to accelerate development and efficiently deliver a functional MVP.",
+      "Applied Agile development practices to rapidly identify high-priority features, iterate on user feedback, and deliver functional updates efficiently within short development cycles."],
+    link: "https://github.com/Thehashhobo/Recipe-Data-Analysis",
+    disable: true,
+  },
   {
     title: "Recipe Data Analyzer",
     description: "A data analysis project built from the ground up, focused on extracting and structuring online data for efficient storage and retrieval. Designed with a product-focused mindset, the project included exploratory data analysis (EDA) to uncover key insights, identify data quality issues, and lay the foundation for model development.",
@@ -26,6 +40,7 @@ const PProjects = [
     technologies: ["Python", "Jupyter", "SQL", "Pandas", ],
     points: ["Developed a web scraper using Python and BeautifulSoup to collect, Clean and serialize recipe data from variouswebsites for analysis.", "Designed and executed complex SQL queries to extract, analyze, and optimize data insights, leveraging efficient indexing, joins, and subqueries for high-performance lookups.", "Performed EDA using Pandas, Seaborn, and Matplotlib to analyze ingredient trends. Identified data quality issues that impacted modeling, preprocessing data and engineered features for future improvements."],
     link: "https://github.com/Thehashhobo/Recipe-Data-Analysis",
+    disable: false,
   },
   {
     title: "Cell Growth Simulation",
@@ -34,7 +49,8 @@ const PProjects = [
     technologies: ["Algorithm Design", "TypeScript", "Graphics Rendering" ],
     points: ["Developed an interactive web simulation capable of handling up to 10 million cells, demonstrating large-scale data optimization.", "Implemented a granular rendering approach and a reactive state architecture, reducing redundant computations and enabling large-scale, real-time updates."],
     link: "https://thehashhobo.github.io/Cell-Growth-Simulation/",
-    extraLink: "https://thehashhobo.github.io/Cell-Growth-Simulation-V2/"
+    extraLink: "https://thehashhobo.github.io/Cell-Growth-Simulation-V2/",
+    disable: false,
   }
 ];
 
@@ -46,6 +62,7 @@ const AProjects = [
     technologies: ["JavaScript", "Django", "React", "SQL", "Agile"],
     points: ["Developed a full-stack web application with 15 distinct pages using Agile methodologies, enabling users to post, search,filter, and apply for pet adoptions.", "Employed Django REST Framework for a scalable back end; integrated React for efficient frontend rendering.", "Deployed the back end on Heroku and front end on Netlify, gaining hands-on experience with CI/CD pipelines."],
     link: "https://barnyard-buddies.netlify.app/",
+    disable: false,
   },
   {
     title: "Collarboration Platform",
@@ -54,6 +71,7 @@ const AProjects = [
     technologies: ["Java"],
     points: ["Designed and implemented a modular architecture following OOP principles, ensuring scalability and ease of feature expansion."],
     link: "https://github.com/CSC207-2022F-UofT/course-project-uofteams",
+    disable: false,
   }
 ];
 
@@ -75,6 +93,7 @@ const Projectpage: React.FC = () => {
             technologies={project.technologies}
             points={project.points}
             link={project.link}
+            disable={project.disable}
           />
         ))}
       </div>
@@ -93,6 +112,7 @@ const Projectpage: React.FC = () => {
             points={project.points}
             link={project.link}
             extraLink={project.extraLink}
+            disable={project.disable}
           />
         ))}
       </div>
@@ -110,6 +130,7 @@ const Projectpage: React.FC = () => {
             technologies={project.technologies}
             points={project.points}
             link={project.link}
+            disable={project.disable}
           />
         ))}
       </div>
