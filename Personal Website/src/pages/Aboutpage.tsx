@@ -47,13 +47,13 @@ const Aboutpage: React.FC = () => {
           <h1 className={styles["title"]}>Hello</h1>
           <h2 className={styles["subtitle"]}>Here's who I am & what I do</h2>
           <div className={styles["button-container"]}>
-            <Link to="/resume" className={styles["custom-button"]}>Résumé</Link>
-            <Link to="/projects" className={styles["custom-button-alt"]}>Projects</Link>
+            <Link to="/Resume" className={styles["custom-button"]}>Résumé</Link>
+            <Link to="/Projects" className={styles["custom-button-alt"]}>Projects</Link>
           </div>
           <p className={styles["description"]}>
             I'm a Computer Science, Statistics and Economics student at the University of Toronto (St. George), graduating in June 2025. 
             With a strong passion for technology and finance, I specialize in full-stack development, bringing ideas to life through code. 
-            I have extensive experience working on freelance and personal projects—check them out in the Projects section! <strong>If you need a website built, 
+            I have extensive experience working on freelance and personal projects—check them out in the Projects section! <strong>If you need a website or app built, 
             feel free to reach out.</strong>
           </p>
         </animated.div>

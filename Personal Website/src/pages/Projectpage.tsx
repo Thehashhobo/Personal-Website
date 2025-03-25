@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './Projectpage.module.css'; 
 import AnimatedCard from "../components/AnimatedCard";
+import { useSpring, animated} from 'react-spring';
+import { useInView } from 'react-intersection-observer';
 import '../typography.css';
 import c1 from '../assets/C11.webp';
 import c2 from '../assets/C21.webp';
@@ -8,6 +10,22 @@ import c3 from '../assets/C31.webp';
 import c4 from '../assets/C4.webp';
 import c5 from '../assets/C5.webp';
 import c6 from '../assets/C6.webp';
+
+const CurrentProjects = [
+  {
+    title: "Double Dating App (In Development)",
+    description: "Conceptualized and developed a cross-platform dating application focused on connecting users through double date experiences. Showcasing both entrepreneurial initiative and full-stack technical execution.",
+    image: c6,
+    technologies: ["React Native", "Typescript", "Expo", "SupaBase", "PostgresSql" ],
+    points: ["Led product validation through targeted user surveys to identify key pain points and desires, transforming insights into actionable features. Combined user-centric design with scalable architecture to create a compelling MVP.",
+      "Building a scalable, feature-rich mobile application using React Native, TypeScript, and Supabase. Implementing real-time chat, dynamic double-profile matching algorithms, and modular architecture optimized for performance and growth.", 
+      "Integrated third-party APIs (e.g., Stream Chat) to accelerate development and efficiently deliver a functional MVP.",
+      "Applied Agile development practices to rapidly identify high-priority features, iterate on user feedback, and deliver functional updates efficiently within short development cycles."],
+    link: "https://github.com/Thehashhobo/DuoDate",
+    disable: false
+  },
+];
+
 const Contracts = [
   {
     title: "Yacht Services Website",
@@ -21,18 +39,6 @@ const Contracts = [
 ];
 
 const PProjects = [
-  {
-    title: "Double Dating App (In Development)",
-    description: "Conceptualized and developed a cross-platform dating application focused on connecting users through double date experiences. Showcasing both entrepreneurial initiative and full-stack technical execution.",
-    image: c6,
-    technologies: ["React Native", "Typescript", "Expo", "SupaBase", "PostgresSql" ],
-    points: ["Led product validation through targeted user surveys to identify key pain points and desires, transforming insights into actionable features. Combined user-centric design with scalable architecture to create a compelling MVP.",
-      "Building a scalable, feature-rich mobile application using React Native, TypeScript, and Supabase. Implementing real-time chat, dynamic double-profile matching algorithms, and modular architecture optimized for performance and growth.", 
-      "Integrated third-party APIs (e.g., Stream Chat) to accelerate development and efficiently deliver a functional MVP.",
-      "Applied Agile development practices to rapidly identify high-priority features, iterate on user feedback, and deliver functional updates efficiently within short development cycles."],
-    link: "https://github.com/Thehashhobo/Recipe-Data-Analysis",
-    disable: true,
-  },
   {
     title: "Recipe Data Analyzer",
     description: "A data analysis project built from the ground up, focused on extracting and structuring online data for efficient storage and retrieval. Designed with a product-focused mindset, the project included exploratory data analysis (EDA) to uncover key insights, identify data quality issues, and lay the foundation for model development.",
@@ -75,10 +81,67 @@ const AProjects = [
   }
 ];
 
+
+
+
+
 const Projectpage: React.FC = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
+
+  const [wiggleStyle, wiggleApi] = useSpring(() => ({
+    from: { rotate: 0 },
+    config: { tension: 300, friction: 10 },
+  }));
+
+  useEffect(() => {
+    if (inView) {
+      wiggleApi.start({
+        to: async (next) => {
+          // Little wiggle movement
+          await next({ rotate: 5 });
+          await next({ rotate: -5 });
+          await next({ rotate: 3 });
+          await next({ rotate: -3 });
+          await next({ rotate: 0 });
+        },
+      });
+    }
+  }, [inView, wiggleApi]);
+
+  const lineSpring = useSpring({
+    width: inView ? '60%' : '0%',
+    config: { duration: 500 },
+  });
+
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>My Projects</h2>
+
+      <div className={styles.subtitleContainer} ref={ref}>
+        <animated.h3 className={styles.subtitle} style={wiggleStyle}>
+          Current Projects
+        </animated.h3>
+        <animated.hr className={styles.line} style={lineSpring} />
+      </div>
+
+      <div className={styles.grid}>
+        {CurrentProjects.map((project, index) => (
+          <AnimatedCard
+            key={index}
+            title={project.title}
+            description={project.description}
+            image={project.image}
+            technologies={project.technologies}
+            points={project.points}
+            link={project.link}
+            disable={project.disable}
+          />
+        ))}
+      </div>
+
       <div className={styles.subtitleContainer}>
         <h3 className={styles.subtitle}>Contract Work</h3>
         <hr className={styles.line} />
