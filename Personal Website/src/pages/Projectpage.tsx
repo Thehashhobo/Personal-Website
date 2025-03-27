@@ -10,6 +10,7 @@ import c3 from '../assets/C31.webp';
 import c4 from '../assets/C4.webp';
 import c5 from '../assets/C5.webp';
 import c6 from '../assets/C6.webp';
+import c7 from '../assets/C7.webp';
 
 const CurrentProjects = [
   {
@@ -22,6 +23,20 @@ const CurrentProjects = [
       "Integrated third-party APIs (e.g., Stream Chat) to accelerate development and efficiently deliver a functional MVP.",
       "Applied Agile development practices to rapidly identify high-priority features, iterate on user feedback, and deliver functional updates efficiently within short development cycles."],
     link: "https://github.com/Thehashhobo/DuoDate",
+    disable: false
+  },
+
+  {
+    title: "Real Talk Web App",
+    description: "Spark meaningful conversations with curated deep discussion topics. Build authentic human connections through thoughtful dialogue and intentional communication.",
+    image: c7,
+    technologies: ["React", "Next.js", "Typescript", "TailwindCSS", "SupaBase", "PostgresSql", "OpenAI" ],
+    points: [
+      "Conducted user research and prototype testing to uncover conversation topic preferences, translating feedback into iterative feature enhancements.",
+      "Architected a scalable Next.js 13 web app with serverless App Router endpoints (route.ts), enabling on-demand topic generation and seamless SSR performance.", 
+      "Deployed to Netlify using the official Next.js plugin, establishing a frictionless CI/CD pipeline for rapid updates and iterative improvements.",
+      "Employed responsive design and thoughtful animations to create an engaging user experience, enhancing user retention and interaction.",],
+    link: "https://realconvos.netlify.app/",
     disable: false
   },
 ];
