@@ -11,6 +11,7 @@ import c4 from '../assets/C4.webp';
 import c5 from '../assets/C5.webp';
 import c6 from '../assets/C6.webp';
 import c7 from '../assets/C7.webp';
+import c8 from '../assets/C8.webp';
 
 const CurrentProjects = [
   {
@@ -71,6 +72,17 @@ const PProjects = [
     points: ["Developed an interactive web simulation capable of handling up to 10 million cells, demonstrating large-scale data optimization.", "Implemented a granular rendering approach and a reactive state architecture, reducing redundant computations and enabling large-scale, real-time updates."],
     link: "https://thehashhobo.github.io/Cell-Growth-Simulation/",
     extraLink: "https://thehashhobo.github.io/Cell-Growth-Simulation-V2/",
+    disable: false,
+  },
+  {
+    title: "Smart Pantry & Recipe Recommender",
+    description: "An Android-based application built in Kotlin that recommends personalized recipes while tracking pantry inventory. Designed as a foundational tutorial in Kotlin and Android development, the app features ingredient management, dynamic filtering, and recipe matching based on available supplies.",
+    image: c8,
+    technologies: ["Kotlin", "Android SDK", "SQLite", "MVVM Architecture"],
+    points: ["Built core functionality for recipe recommendation based on user-inputted inventory items.",
+       "Designed and implemented inventory tracking system with local data persistence using SQLite.",
+       "Serves as a foundational Kotlin Android project, showcasing clean architecture and UI logic for future expansion."],
+    link: "https://github.com/Thehashhobo/FreshBites",
     disable: false,
   }
 ];
