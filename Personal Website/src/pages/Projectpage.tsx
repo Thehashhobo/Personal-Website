@@ -12,6 +12,7 @@ import c5 from '../assets/C5.webp';
 import c6 from '../assets/C6.webp';
 import c7 from '../assets/C7.webp';
 import c8 from '../assets/C8.webp';
+import c9 from '../assets/C9.webp';
 
 const CurrentProjects = [
   {
@@ -55,6 +56,18 @@ const Contracts = [
 ];
 
 const PProjects = [
+  {
+    title: "Corporation-Data-Display",
+    description: "Built an interactive org chart visualization tool to display large-scale hierarchical organizational data (Supports at least 100k rows) from CSV input.",
+    image: c9,
+    technologies: ["Vue.js", "Tailwind CSS", "D3.js",],
+    points: ["Implemented dynamic tree layout with d3.hierarchy() and support for expandable/collapsible nodes.", 
+      "Optimized descendant calculations using memoization to improve performance on large datasets.",
+      "Designed a responsive interface that adapts to various screen sizes and tree states.",
+    "LRU-based level constraint to prevent overflow when expanding large number of nodes"],
+    link: "https://github.com/Thehashhobo/Corporation-Data-Display",
+    disable: false,
+  },
   {
     title: "Recipe Data Analyzer",
     description: "A data analysis project built from the ground up, focused on extracting and structuring online data for efficient storage and retrieval. Designed with a product-focused mindset, the project included exploratory data analysis (EDA) to uncover key insights, identify data quality issues, and lay the foundation for model development.",
