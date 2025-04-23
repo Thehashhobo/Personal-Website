@@ -13,6 +13,7 @@ import c6 from '../assets/C6.webp';
 import c7 from '../assets/C7.webp';
 import c8 from '../assets/C8.webp';
 import c9 from '../assets/C9.webp';
+import c10 from '../assets/C10.webp';
 
 const CurrentProjects = [
   {
@@ -52,6 +53,22 @@ const Contracts = [
     points: ["Collaborated closely with client to translate design requirements into a functional site. Increasing Business traffic by 17%", "Designed and developed a responsive marketing webpage for a yacht management company, enhancing online presence and client acquisition using React, TypeScript, Node.js, and AntDesign UI library.", "Deployed and hosted the site on Netlify, ensuring a CI/CD workflow for seamless updates and version control."],
     link: "https://oceanwavevip.com/",
     disable: false,
+  },
+  {
+    title: "Colossal Carrier Logistics Site",
+    description: "A custom-built marketing platform designed to scale operations for a growing cross-border trucking company, integrating modern UI frameworks, driver recruitment workflows, and lead generation tools to streamline service inquiries and attract top driving talent.",
+    image: c10,
+    technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "Google Analytics"],
+    points: [
+      "Worked directly with stakeholders to distill business needs into a high-performance logistics site.",
+      "Engineered a high-performance, responsive single-page application to showcase freight services, resulting in a 32% increase in service inquiries and significantly improving user engagement.",
+      "Built a fully integrated hiring portal for company drivers, lease purchase candidates, and owner-operators, enabling efficient applicant screening and reducing vehicle idle by 27%.",
+      "Developed a lightweight backend system paired with admin panel for managing driver applications and contact form submissions, streamlining internal workflows.",
+      
+      // "Implemented Netlify CI/CD pipelines for fast and reliable deployments, cutting manual update time by 80% and enabling rapid iteration based on client feedback."
+    ],
+    link: "https://oceanwavevip.com/",
+    disable: true,
   }
 ];
 

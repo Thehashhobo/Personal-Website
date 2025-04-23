@@ -29,8 +29,8 @@
   }
 
 .grid {
-    display: flex;
-    flex-direction: column;
+    display: grid; /* Change to grid layout */
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for desktop */
     gap: 40px; /* Space between grid items */
     justify-items: center; /* Center items horizontally */
 }
@@ -52,4 +52,7 @@
     
     }
 
+    .grid {
+        grid-template-columns: 1fr; /* 1 column for mobile */
+    }
   }

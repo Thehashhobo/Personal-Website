@@ -15,12 +15,14 @@ const App: React.FC = () => {
     <Router>
       <ScrollToTop />
       <Navbar />
+      <main>
       <Routes>
         <Route path="/" element={<Aboutpage />} />
         <Route path="/resume" element={<Resumepage />} />
         <Route path="/projects" element={<Projectpage />} />
         <Route path="/contact" element={<Contactpage />} />
       </Routes>
+      </main>
       <Footer />
     </Router>
   );
