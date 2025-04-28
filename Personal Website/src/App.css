@@ -11,3 +11,35 @@ html, body {
   padding: 0;
   overflow-x: hidden; /* Prevent horizontal scrolling */
 }
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-15deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+  75% {
+    transform: rotate(-15deg);
+  }
+}
+
+@keyframes scale {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+}
+
+.wiggle-animation {
+  animation: wiggle 3s infinite;
+}
+
+.scale-animation {
+  animation: scale 1s infinite;
+}
