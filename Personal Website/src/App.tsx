@@ -22,7 +22,7 @@ const App: React.FC = () => {
   const customApiCall = async (userMessage: string): Promise<string> => {
     setIsTyping(true);
     try {
-      const response = await axios.post('http://3.142.150.254:3000/api/ask', {
+      const response = await axios.post('https://personal-backend-alb-1279151415.us-east-2.elb.amazonaws.com/api/ask', {
         question: userMessage
       });
       return response.data.answer;
