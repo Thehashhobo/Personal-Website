@@ -14,6 +14,7 @@ import c7 from '../assets/C7.webp';
 import c8 from '../assets/C8.webp';
 import c9 from '../assets/C9.webp';
 import c10 from '../assets/C10.webp';
+import c11 from '../assets/C12.webp';
 
 const CurrentProjects = [
   {
@@ -84,6 +85,18 @@ const PProjects = [
     "LRU-based level constraint to prevent overflow when expanding large number of nodes",
   "Demo on codesandbox: https://codesandbox.io/p/github/Thehashhobo/Corporation-Data-Display/main?import=true"],
     link: "https://github.com/Thehashhobo/Corporation-Data-Display",
+    disable: false,
+  },
+  {
+    title: "Personal Portfolio Website",
+    description: "A custom-built full stack personal website designed to showcase my design expertise, technical skills, and creativity while enhancing my online presence and visibility.",
+    image: c11,
+    technologies: ["TypeScript", "React", "Node.js", "Express", "AWS", "Docker",],
+    points: ["Developed an interactive Vite + React frontend, integrating a floating chat widget for real-time conversations with the AI assistant over secure API routes.", 
+      "Built a secure Node.js + Express backend, Dockerized and deployed to AWS ECS Fargate behind a HTTPS-enabled Application Load Balancer (ALB) inside a custom VPC",
+      "Automated SSL certification and DNS routing using AWS ACM and custom CNAME records to enable clean HTTPS access.",
+    "Designed lightweight Retrieval-Augmented Generation (RAG) logic for fast AI responses, leveraging cosine similarity matching on pre-embedded user data.",],
+    link: "https://github.com/Thehashhobo/Personal-Website",
     disable: false,
   },
   {

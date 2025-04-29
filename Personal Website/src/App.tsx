@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChatBotWidget } from 'chatbot-widget-ui';
 import './App.css';
 import Navbar from './components/Navbar';
@@ -18,6 +18,21 @@ const App: React.FC = () => {
 
   const [isTyping, setIsTyping] = useState(false);
   const [iconClicked, setIconClicked] = useState(false); // Track if the icon is clicked
+  const [isMobile, setIsMobile] = useState(false); // Track if the screen is mobile
+
+  // Detect screen size
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // Set to true if screen width is 768px or less
+    };
+
+    handleResize(); // Check on initial render
+    window.addEventListener('resize', handleResize); // Add event listener for resize
+
+    return () => {
+      window.removeEventListener('resize', handleResize); // Cleanup on unmount
+    };
+  }, []);
 
   const customApiCall = async (userMessage: string): Promise<string> => {
     setIsTyping(true);
@@ -48,45 +63,47 @@ const App: React.FC = () => {
       <ScrollToTop />
       <Navbar />
       <main>
-        <div
-          style={{
-            position: "fixed",
-            bottom: "20px",
-            right: "20px",
-            zIndex: 1000,
-          }}
-        >
+        {!isMobile && ( // Only render the chatbot if not on mobile
           <div
-            className={!iconClicked ? "wiggle-animation" : ""} // Apply animation if not clicked
-            onClick={() => setIconClicked(true)} // Stop animation on click
+            style={{
+              position: "fixed",
+              bottom: "20px",
+              right: "20px",
+              zIndex: 1000,
+            }}
           >
-            <ChatBotWidget
-              callApi={customApiCall}
-              onBotResponse={handleBotResponse}
-              handleNewMessage={handleNewMessage}
-              messages={messages}
-              primaryColor="#ebcd02"
-              inputMsgPlaceholder="Type your question..."
-              chatbotName="Jerry's Assistant"
-              isTypingMessage={isTyping ? "Typing..." : undefined}
-              IncommingErrMsg="Oops! Something went wrong. Try again."
-              chatIcon={<div>🤖</div>}
-              botIcon={<div>🤖</div>}
-              botFontStyle={{
-                fontFamily: "Arial",
-                fontSize: "14px",
-                color: "black",
-              }}
-              typingFontStyle={{
-                fontFamily: "Arial",
-                fontSize: "14px",
-                color: "#888",
-                fontStyle: "italic",
-              }}
-              useInnerHTML={true}
-            />
+            <div
+              className={!iconClicked ? "wiggle-animation" : ""} // Apply animation if not clicked
+              onClick={() => setIconClicked(true)} // Stop animation on click
+            >
+              <ChatBotWidget
+                callApi={customApiCall}
+                onBotResponse={handleBotResponse}
+                handleNewMessage={handleNewMessage}
+                messages={messages}
+                primaryColor="#ebcd02"
+                inputMsgPlaceholder="Type your question..."
+                chatbotName="Jerry's Assistant"
+                isTypingMessage={isTyping ? "Typing..." : undefined}
+                IncommingErrMsg="Oops! Something went wrong. Try again."
+                chatIcon={<div>🤖</div>}
+                botIcon={<div>🤖</div>}
+                botFontStyle={{
+                  fontFamily: "Arial",
+                  fontSize: "14px",
+                  color: "black",
+                }}
+                typingFontStyle={{
+                  fontFamily: "Arial",
+                  fontSize: "14px",
+                  color: "#888",
+                  fontStyle: "italic",
+                }}
+                useInnerHTML={true}
+              />
+            </div>
           </div>
-        </div>
+        )}
         <Routes>
           <Route path="/" element={<Aboutpage />} />
           <Route path="/resume" element={<Resumepage />} />
