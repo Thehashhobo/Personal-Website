@@ -13,7 +13,7 @@ const Resumepage: React.FC = () => {
       <iframe src={resumeUrl} className={styles.pdfViewer} title="Resume PDF"></iframe>
 
       {/* Download Button */}
-      <a href={resumeUrl} download="Junan_Wang_Swe.pdf" className={styles.downloadButton}>
+      <a href={resumeUrl} download="Junan_Wang_Swe_1.pdf" className={styles.downloadButton}>
         Download Résumé
       </a>
     </div>
