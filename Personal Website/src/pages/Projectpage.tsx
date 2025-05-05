@@ -15,6 +15,7 @@ import c8 from '../assets/C8.webp';
 import c9 from '../assets/C9.webp';
 import c10 from '../assets/C10.webp';
 import c11 from '../assets/C12.webp';
+import c12 from '../assets/C13.webp';
 
 const CurrentProjects = [
   {
@@ -57,13 +58,13 @@ const Contracts = [
   },
   {
     title: "Colossal Carrier Logistics Site",
-    description: "A custom-built marketing platform designed to scale operations for a growing cross-border trucking company, integrating modern UI frameworks, driver recruitment workflows, and lead generation tools to streamline service inquiries and attract top driving talent.",
+    description: "A custom-built marketing platform designed to scale operations for a growing cross-border trucking company.", //integrating modern UI frameworks, driver recruitment workflows, and lead generation tools to streamline service inquiries and attract driving talents.
     image: c10,
     technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "Google Analytics"],
     points: [
       "Worked directly with stakeholders to distill business needs into a high-performance logistics site.",
       "Engineered a high-performance, responsive single-page application to showcase freight services, resulting in a 32% increase in service inquiries and significantly improving user engagement.",
-      "Built a fully integrated hiring portal for company drivers, lease purchase candidates, and owner-operators, enabling efficient applicant screening and reducing vehicle idle by 27%.",
+      "Built a fully integrated hiring portal for company drivers, lease purchase candidates, and owner-operators, enabling efficient applicant screening and reducing vehicle idle Time.",
       "Developed a lightweight backend system paired with admin panel for managing driver applications and contact form submissions, streamlining internal workflows.",
       
       // "Implemented Netlify CI/CD pipelines for fast and reliable deployments, cutting manual update time by 80% and enabling rapid iteration based on client feedback."
@@ -74,6 +75,21 @@ const Contracts = [
 ];
 
 const PProjects = [
+  {
+    title: "Shipment Tracker",
+    description: "A full-stack shipment tracking system featuring a Next.js dashboard frontend and a cleanly architected ASP.NET Core Web API backend, with SQLite database integration and Swagger API testing.",
+    image: c12,
+    technologies: ["TypeScript", "C Sharp", "Next.js", "Material UI", ".NET 9", "EF Core", "SQLite", "Swagger", "Serilog"],
+    points: [
+      "Built a responsive shipment management dashboard using Next.js, React, and Material UI with filtering, pagination, sorting and form modals.",
+      "Implemented a layered backend using ASP.NET Core Web API and Clean Architecture with DDD, enforcing separation of concerns across API, Application, Domain, and Infrastructure.",
+      "Integrated Entity Framework Core with SQLite, and enabled code-first migrations for easy schema updates and development inspection.",
+      "Used Serilog for structured logging to both console and file sinks, supporting scalable monitoring and debugging.",
+      "Documented setup and design choices with learning notes highlighting rapid upskilling in the .NET ecosystem and backend production patterns.",
+    ],
+    link: "https://github.com/Thehashhobo/Full-Stack-Developer-Assignment",
+    disable: false
+  },  
   {
     title: "Corporation-Data-Display",
     description: "Built an interactive org chart visualization tool to display large-scale hierarchical organizational data (Supports at least 100k rows) from CSV input.",
@@ -101,7 +117,7 @@ const PProjects = [
   },
   {
     title: "Recipe Data Analyzer",
-    description: "A data analysis project built from the ground up, focused on extracting and structuring online data for efficient storage and retrieval. Designed with a product-focused mindset, the project included exploratory data analysis (EDA) to uncover key insights, identify data quality issues, and lay the foundation for model development.",
+    description: "A data analysis project built from the ground up, focused on extracting and structuring online data for efficient storage and retrieval. Designed with a product-focused mindset, the project included EDA to uncover key insights, identify data quality issues and model development.",
     image: c2,
     technologies: ["Python", "Jupyter", "SQL", "Pandas", ],
     points: ["Developed a web scraper using Python and BeautifulSoup to collect, Clean and serialize recipe data from variouswebsites for analysis.", "Designed and executed complex SQL queries to extract, analyze, and optimize data insights, leveraging efficient indexing, joins, and subqueries for high-performance lookups.", "Performed EDA using Pandas, Seaborn, and Matplotlib to analyze ingredient trends. Identified data quality issues that impacted modeling, preprocessing data and engineered features for future improvements."],
