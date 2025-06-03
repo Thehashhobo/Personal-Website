@@ -1,7 +1,7 @@
 .about-container {
     display: flex;
     width: 100vw;
-    height: 140vh; /* Full screen height */
+    height: 120vh; /* Full screen height */
     position: relative; /* Ensures the card positions correctly */
     overflow: hidden;
 }
@@ -114,7 +114,7 @@
 @media (max-width: 768px) {
     .about-container {
         flex-direction: column;
-        height: 200vh;
+        height: 180vh;
 
     }
 

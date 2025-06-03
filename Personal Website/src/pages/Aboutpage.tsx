@@ -53,7 +53,7 @@ const Aboutpage: React.FC = () => {
           <p className={styles["description"]}>
             I'm a Computer Science, Statistics and Economics student at the University of Toronto (St. George), graduating in June 2025. 
             With a strong passion for technology and finance, I specialize in full-stack development, bringing ideas to life through code. 
-            I have extensive experience working on freelance and personal projects—check them out in the Projects section! <strong>If you need a website or app built, 
+            I have extensive experience working on freelance and personal projects—check them out in the Projects section! <strong>If you need someone to help you with your next site or app, 
             feel free to reach out.</strong>
           </p>
         </animated.div>

@@ -16,6 +16,7 @@ import c9 from '../assets/C9.webp';
 import c10 from '../assets/C10.webp';
 import c11 from '../assets/C12.webp';
 import c12 from '../assets/C13.webp';
+import c14 from '../assets/C14.webp';
 
 const CurrentProjects = [
   {
@@ -32,16 +33,16 @@ const CurrentProjects = [
   },
 
   {
-    title: "Real Talk Web App",
-    description: "Spark meaningful conversations with curated deep discussion topics. Build authentic human connections through thoughtful dialogue and intentional communication.",
-    image: c7,
-    technologies: ["React", "Next.js", "Typescript", "TailwindCSS", "Google Analytics", "OpenAI" ],
+    title: "DU Toronto Web Platform",
+    description: "Official website of Delta Upsilon Toronto Chapter — built to connect brothers, promote events, and support chapter growth through donations and merchandise sales.",
+    image: c14,
+    technologies: ["Next.js", "Typescript", "TailwindCSS", "Supabase", "Stripe", "Vercel"],
     points: [
-      "Conducted user research and prototype testing to uncover conversation topic preferences, translating feedback into iterative feature enhancements.",
-      "Architected a scalable Next.js 13 web app with serverless App Router endpoints (route.ts), enabling on-demand topic generation and seamless SSR performance.", 
-      "Deployed to Netlify using the official Next.js plugin, establishing a frictionless CI/CD pipeline for rapid updates and iterative improvements.",
-      "Employed responsive design and thoughtful animations to create an engaging user experience, enhancing user retention and interaction.",],
-    link: "https://realtalkz.netlify.app/",
+      "Led full-stack development and deployment of the official DU Toronto website, mentoring two developers and collaborating with a UI/UX designer to deliver a modern, branded digital platform.",
+      "Architected a responsive and scalable Next.js 14 app with serverless App Router endpoints, optimizing UX through prefetching, lazy loading, and SSR for fast, on-demand topic generation.",
+      "Built a custom e-commerce store using Supabase for inventory management and Stripe for secure payment processing. Integrated Google Analytics to monitor traffic, optimize SEO, and drive targeted engagement.",
+      "Deployed to Vercal using the official Next.js plugin, establishing a frictionless CI/CD pipeline for rapid updates and iterative improvements.",],
+    link: "https://du-toronto-webpage.vercel.app/",
     disable: false
   },
 ];
@@ -74,7 +75,20 @@ const Contracts = [
   }
 ];
 
-const PProjects = [
+const PersonalProjects = [
+    {
+    title: "Real Talk Web App",
+    description: "Spark meaningful conversations with curated deep discussion topics. Build authentic human connections through thoughtful dialogue and intentional communication.",
+    image: c7,
+    technologies: ["React", "Next.js", "Typescript", "TailwindCSS", "Google Analytics", "OpenAI" ],
+    points: [
+      "Conducted user research and prototype testing to uncover conversation topic preferences, translating feedback into iterative feature enhancements.",
+      "Architected a scalable Next.js 13 web app with serverless App Router endpoints (route.ts), enabling on-demand topic generation and seamless SSR performance.", 
+      "Deployed to Netlify using the official Next.js plugin, establishing a frictionless CI/CD pipeline for rapid updates and iterative improvements.",
+      "Employed responsive design and thoughtful animations to create an engaging user experience, enhancing user retention and interaction.",],
+    link: "https://realtalkz.netlify.app/",
+    disable: false
+  },
   {
     title: "Shipment Tracker",
     description: "A full-stack shipment tracking system featuring a Next.js dashboard frontend and a cleanly architected ASP.NET Core Web API backend, with SQLite database integration and Swagger API testing.",
@@ -147,7 +161,7 @@ const PProjects = [
   }
 ];
 
-const AProjects = [
+const AcademicProjects = [
   {
     title: "Pet adoption site",
     description: "Led a team of four developers to build a full-stack web application from scratch, driving development with Agile methodologies. Organized weekly meetings to align goals, address challenges, and ensure progress. Took initiative in decision-making, balancing technical execution with user needs for a scalable product.",
@@ -252,7 +266,7 @@ const Projectpage: React.FC = () => {
         <hr className={styles.line} />
       </div>
       <div className={styles.grid}>
-        {PProjects.map((project, index) => (
+        {PersonalProjects.map((project, index) => (
           <AnimatedCard
             key={index}
             title={project.title}
@@ -271,7 +285,7 @@ const Projectpage: React.FC = () => {
         <hr className={styles.line} />
       </div>
       <div className={styles.grid}>
-        {AProjects.map((project, index) => (
+        {AcademicProjects.map((project, index) => (
           <AnimatedCard
             key={index}
             title={project.title}
