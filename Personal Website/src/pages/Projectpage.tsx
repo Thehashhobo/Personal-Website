@@ -17,6 +17,7 @@ import c10 from '../assets/C10.webp';
 import c11 from '../assets/C12.webp';
 import c12 from '../assets/C13.webp';
 import c14 from '../assets/C14.webp';
+import c15 from '../assets/c15.webp';
 
 const CurrentProjects = [
   {
@@ -146,6 +147,18 @@ const PersonalProjects = [
     points: ["Developed an interactive web simulation capable of handling up to 10 million cells, demonstrating large-scale data optimization.", "Implemented a granular rendering approach and a reactive state architecture, reducing redundant computations and enabling large-scale, real-time updates."],
     link: "https://thehashhobo.github.io/Cell-Growth-Simulation/",
     extraLink: "https://thehashhobo.github.io/Cell-Growth-Simulation-V2/",
+    disable: false,
+  },
+  {
+    title: "Sheep data tracker",
+    description: "A full-stack vanilla JS web application built for the Canadian Sheep Federation to streamline sheep-related data collection. Integrates a custom REST API and a geolocation-enabled frontend to allow users to submit, store, and retrieve structured sheep health and location data.",
+    image: c15,
+    technologies: ["Node.js", "Express", "JavaScript"],
+    points: ["Built a RESTful API using Node.js and Express, supporting form submission, retrieval by ID, and listing all entries, with persistent storage in SQLite.",
+    "Designed a responsive application with real-time location autocomplete using a public geocoding API, enhancing data entry accuracy."
+    ],
+    link: "https://github.com/Thehashhobo/CSFIntershipAssessment2025",
+    // extraLink: "https://thehashhobo.github.io/Cell-Growth-Simulation-V2/",
     disable: false,
   },
   {
