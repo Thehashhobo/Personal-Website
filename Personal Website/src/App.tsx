@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ChatBotWidget } from 'chatbot-widget-ui';
 import './App.css';
 import Navbar from './components/Navbar';
@@ -18,21 +18,21 @@ const App: React.FC = () => {
 
   const [isTyping, setIsTyping] = useState(false);
   const [iconClicked, setIconClicked] = useState(false); // Track if the icon is clicked
-  const [isMobile, setIsMobile] = useState(false); // Track if the screen is mobile
+  // const [isMobile, setIsMobile] = useState(false); // Track if the screen is mobile
 
-  // Detect screen size
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); // Set to true if screen width is 768px or less
-    };
+  // // Detect screen size
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setIsMobile(window.innerWidth <= 768); // Set to true if screen width is 768px or less
+  //   };
 
-    handleResize(); // Check on initial render
-    window.addEventListener('resize', handleResize); // Add event listener for resize
+  //   handleResize(); // Check on initial render
+  //   window.addEventListener('resize', handleResize); // Add event listener for resize
 
-    return () => {
-      window.removeEventListener('resize', handleResize); // Cleanup on unmount
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener('resize', handleResize); // Cleanup on unmount
+  //   };
+  // }, []);
 
   const customApiCall = async (userMessage: string): Promise<string> => {
     setIsTyping(true);
@@ -63,7 +63,6 @@ const App: React.FC = () => {
       <ScrollToTop />
       <Navbar />
       <main>
-        {!isMobile && ( // Only render the chatbot if not on mobile
           <div
             style={{
               position: "fixed",
@@ -103,7 +102,6 @@ const App: React.FC = () => {
               />
             </div>
           </div>
-        )}
         <Routes>
           <Route path="/" element={<Aboutpage />} />
           <Route path="/resume" element={<Resumepage />} />
