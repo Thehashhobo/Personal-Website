@@ -37,7 +37,7 @@ const App: React.FC = () => {
   const customApiCall = async (userMessage: string): Promise<string> => {
     setIsTyping(true);
     try {
-      const response = await axios.post('http://18.118.104.71:3000/api/ask', {
+      const response = await axios.post('https://personal-backend.fly.dev/api/ask', {
         question: userMessage
       });
       return response.data.answer;
