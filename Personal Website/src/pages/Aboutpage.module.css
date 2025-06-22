@@ -114,7 +114,7 @@
 @media (max-width: 768px) {
     .about-container {
         flex-direction: column;
-        height: 180vh;
+        height: 200vh;
 
     }
 
@@ -125,6 +125,7 @@
     .hero-container {
         margin-bottom: 3rem;
         width: 90%;
+        top:35%;
         height: auto;
         flex-direction: column;
         margin-top: 11.5rem;

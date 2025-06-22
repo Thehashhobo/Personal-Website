@@ -1,6 +1,7 @@
 .form {
-    max-width: 600px;
-    margin: auto;
+    min-width: 600px;
+    margin: 10px;
+    justify-self: center;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -78,10 +79,22 @@
   }
   
   /* Responsive Design */
-  @media (max-width: 600px) {
+  @media (max-width: 768px) {
     .inputGroup {
       flex-direction: column;
       gap: 0;
     }
+    .form {
+    min-width: 80%;
+    margin: 10px;
+    justify-self: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 3rem;
+    border: 2px solid black;
+    border-spacing: 3rem;
+  }
   }
   
