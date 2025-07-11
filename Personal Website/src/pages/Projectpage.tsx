@@ -18,6 +18,8 @@ import c11 from '../assets/C12.webp';
 import c12 from '../assets/C13.webp';
 import c14 from '../assets/C14.webp';
 import c15 from '../assets/c15.webp';
+import c16 from '../assets/C16.webp';
+
 
 const CurrentProjects = [
   {
@@ -71,12 +73,24 @@ const Contracts = [
       
       // "Implemented Netlify CI/CD pipelines for fast and reliable deployments, cutting manual update time by 80% and enabling rapid iteration based on client feedback."
     ],
-    link: "https://oceanwavevip.com/",
-    disable: true,
+    link: "https://www.colossalcarriers.com/",
+    disable: false,
   }
 ];
 
 const PersonalProjects = [
+  {
+    title: "Drag and Drop Form Builder",
+    description: "A visual form builder, enabling intuitive drag-and-drop placement of UI elements on a grid-based canvas.", //integrating modern UI frameworks, driver recruitment workflows, and lead generation tools to streamline service inquiries and attract driving talents.
+    image: c16,
+    technologies: ["React", "TypeScript", "DND Core"],
+    points: [
+    "Implemented a dynamic drag-and-drop interface with real-time grid cell highlighting and component snapping, ensuring a natural and responsive UX.",
+    "Built a modular component architecture supporting multiple input types including text fields, labels, and buttons, aligned to a customizable CSS grid.",
+    ],
+    link: "https://github.com/Thehashhobo/feathery-form-builder",
+    disable: false,
+  },
     {
     title: "Real Talk Web App",
     description: "Spark meaningful conversations with curated deep discussion topics. Build authentic human connections through thoughtful dialogue and intentional communication.",
