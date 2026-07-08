@@ -38,7 +38,8 @@ const App: React.FC = () => {
     setIsTyping(true);
     try {
       const response = await axios.post('https://personal-backend.fly.dev/api/ask', {
-        question: userMessage
+        question: userMessage,
+        history: messages.slice(-6)
       });
       return response.data.answer;
     } catch (error) {

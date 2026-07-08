@@ -97,7 +97,7 @@ const Navbar: React.FC = () => {
         >
           Jerry Wang
         </h2>
-        <h2
+        {/* <h2
           style={{
             fontFamily: '"Poppins", sans-serif',
             fontSize: 'clamp(0.9rem, 2.5vw, 1.5rem)', // Adjusts between 0.9rem and 1.5rem
@@ -108,8 +108,7 @@ const Navbar: React.FC = () => {
             marginTop: '2px',
           }}
         >
-          \ Software Developer
-        </h2>
+        </h2> */}
       </div>
 
       {isSmallScreen ? (

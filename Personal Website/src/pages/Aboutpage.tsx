@@ -38,7 +38,7 @@ const Aboutpage: React.FC = () => {
           <ProfileCard 
             image={my_photo} 
             name="Jerry Wang" 
-            role="Software Developer" 
+            role="" 
           />
         </animated.div>
 
@@ -51,10 +51,7 @@ const Aboutpage: React.FC = () => {
             <Link to="/Projects" className={styles["custom-button-alt"]}>Projects</Link>
           </div>
           <p className={styles["description"]}>
-            I'm a Computer Science, Statistics and Economics student at the University of Toronto (St. George), graduating in June 2025. 
-            With a strong passion for technology and finance, I specialize in full-stack development, bringing ideas to life through code. 
-            I have extensive experience working on freelance and personal projects—check them out in the Projects section! <strong>If you need someone to help you with your next site or app, 
-            feel free to reach out.</strong>
+University of Toronto graduate (Computer Science, Statistics, & Economics) <strong>combining full-stack development experience with a strategic focus on tech-finance project management.</strong> Proven track record of delivering end-to-end full-time and personal projects. Skilled at translating complex business requirements into technical execution, managing cross-functional alignment, and driving product lifecycles.
           </p>
         </animated.div>
       </div>

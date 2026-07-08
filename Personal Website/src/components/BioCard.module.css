@@ -78,15 +78,16 @@
   
 .socialIcons a {
     color: black;
-    transition: 0.3s ease-in-out;
-    scale: 1.4;
+    transition: transform 0.3s ease, color 0.3s ease;
+    transform: scale(1.4);
     margin-top: 8px;
+    display: inline-block;
 }
 
-  
-  .socialIcons a:hover {
-    color: blue;
-  }
+.socialIcons a:hover {
+    color: #0077b5;
+    transform: scale(1.7) translateY(-3px);
+}
   
   /* Responsive Design */
   @media (max-width: 768px) {
