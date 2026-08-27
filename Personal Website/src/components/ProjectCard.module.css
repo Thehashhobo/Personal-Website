@@ -1,0 +1,125 @@
+.card { min-width: 0; }
+
+.link { display: block; }
+
+/* ---- image well --------------------------------------------------------- */
+
+.well {
+  position: relative;
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
+  background: var(--paper-raised);
+  margin-bottom: 1.25rem;
+}
+
+.well img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1s var(--ease-out), filter var(--dur-base) var(--ease-out);
+  filter: saturate(0.92);
+}
+
+/* The well holds its size; only the image inside moves. */
+.link:hover .well img,
+.link:focus-visible .well img {
+  transform: scale(1.05);
+  filter: saturate(1);
+}
+
+.metric {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.7rem 0.95rem;
+  background: var(--paper);
+  transform: translateY(0);
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.metric strong {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+}
+
+.metric span {
+  font-family: var(--font-mono);
+  font-size: var(--size-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+/* ---- meta --------------------------------------------------------------- */
+
+.meta {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+  margin-bottom: 0.6rem;
+}
+
+.index,
+.category {
+  font-family: var(--font-mono);
+  font-size: var(--size-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.index { color: var(--accent); }
+.category { color: var(--ink-faint); }
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--size-h3);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.4rem;
+  display: inline-block;
+  position: relative;
+}
+
+.title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.link:hover .title::after,
+.link:focus-visible .title::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+.tagline {
+  font-size: var(--size-body);
+  color: var(--ink-muted);
+  margin-bottom: 1rem;
+  max-width: 40ch;
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.9rem;
+  font-family: var(--font-mono);
+  font-size: var(--size-label);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}

@@ -1,118 +1,75 @@
-import React, { useState } from 'react';
-import { ChatBotWidget } from 'chatbot-widget-ui';
-import './App.css';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Aboutpage from './pages/Aboutpage';
-import Resumepage from './pages/Resumepage';
-import Projectpage from './pages/Projectpage';
-import Contactpage from './pages/Contactpage';
-import ScrollToTop from './components/ScrollToTop';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-import axios from 'axios';
+import React from "react";
+import { HashRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence, MotionConfig, motion } from "motion/react";
+import Nav from "./components/Nav";
+import Footer from "./components/Footer";
+import ChatDock from "./components/ChatDock";
+import Home from "./pages/Home";
+import Projects from "./pages/Projects";
+import Resume from "./pages/Resume";
+import Contact from "./pages/Contact";
+import { resetScroll, useSmoothScroll } from "./lib/useLenis";
+import { pageTransition } from "./lib/motion";
 
-const App: React.FC = () => {
-  const [messages, setMessages] = useState<any[]>([
-    { role: 'assistant', content: "Hi! I'm Jerry Wang's assistant. Feel free to ask me anything about Jerry!" }
-  ]);
-
-  const [isTyping, setIsTyping] = useState(false);
-  const [iconClicked, setIconClicked] = useState(false); // Track if the icon is clicked
-  // const [isMobile, setIsMobile] = useState(false); // Track if the screen is mobile
-
-  // // Detect screen size
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     setIsMobile(window.innerWidth <= 768); // Set to true if screen width is 768px or less
-  //   };
-
-  //   handleResize(); // Check on initial render
-  //   window.addEventListener('resize', handleResize); // Add event listener for resize
-
-  //   return () => {
-  //     window.removeEventListener('resize', handleResize); // Cleanup on unmount
-  //   };
-  // }, []);
-
-  const customApiCall = async (userMessage: string): Promise<string> => {
-    setIsTyping(true);
-    try {
-      const response = await axios.post('https://personal-backend.fly.dev/api/ask', {
-        question: userMessage,
-        history: messages.slice(-6)
-      });
-      return response.data.answer;
-    } catch (error) {
-      console.error(error);
-      return "Oops! Something went wrong. Please try again later.";
-    } finally {
-      setIsTyping(false);
-    }
-  };
-
-  const handleNewMessage = (newMessage: { content: string }) => {
-    setMessages(prev => [...prev, { role: 'user', content: newMessage.content }]);
-  };
-
-  const handleBotResponse = (botResponse: string) => {
-    console.log("Bot Response:", botResponse);
-    setMessages(prev => [...prev, { role: 'assistant', content: botResponse }]);
-  };
+/**
+ * Routes wrapped in a cross-fade.
+ *
+ * AnimatePresence needs a stable key per route and an explicit `location`,
+ * otherwise the outgoing tree re-renders with the new match and the exit
+ * animation plays against the wrong content. `mode="wait"` keeps the two pages
+ * from overlapping, which matters because both are full-bleed.
+ *
+ * Scroll is reset in onExitComplete rather than on pathname change: resetting
+ * eagerly would yank the outgoing page to the top while it is still visible.
+ */
+const AnimatedRoutes: React.FC = () => {
+  const location = useLocation();
 
   return (
-    <Router>
-      <ScrollToTop />
-      <Navbar />
-      <main>
-          <div
-            style={{
-              position: "fixed",
-              bottom: "20px",
-              right: "20px",
-              zIndex: 1000,
-            }}
-          >
-            <div
-              className={!iconClicked ? "wiggle-animation" : ""} // Apply animation if not clicked
-              onClick={() => setIconClicked(true)} // Stop animation on click
-            >
-              <ChatBotWidget
-                callApi={customApiCall}
-                onBotResponse={handleBotResponse}
-                handleNewMessage={handleNewMessage}
-                messages={messages}
-                primaryColor="#ebcd02"
-                inputMsgPlaceholder="Type your question..."
-                chatbotName="Jerry's Assistant"
-                isTypingMessage={isTyping ? "Typing..." : undefined}
-                IncommingErrMsg="Oops! Something went wrong. Try again."
-                chatIcon={<div>🤖</div>}
-                botIcon={<div>🤖</div>}
-                botFontStyle={{
-                  fontFamily: "Arial",
-                  fontSize: "14px",
-                  color: "black",
-                }}
-                typingFontStyle={{
-                  fontFamily: "Arial",
-                  fontSize: "14px",
-                  color: "#888",
-                  fontStyle: "italic",
-                }}
-                useInnerHTML={true}
-              />
-            </div>
-          </div>
-        <Routes>
-          <Route path="/" element={<Aboutpage />} />
-          <Route path="/resume" element={<Resumepage />} />
-          <Route path="/projects" element={<Projectpage />} />
-          <Route path="/contact" element={<Contactpage />} />
+    <AnimatePresence mode="wait" initial={false} onExitComplete={resetScroll}>
+      <motion.main
+        key={location.pathname}
+        variants={pageTransition}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+      >
+        <Routes location={location}>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/resume" element={<Resume />} />
+          <Route path="/contact" element={<Contact />} />
+          {/* Anything unrecognised lands on the index rather than a blank page. */}
+          <Route path="*" element={<Home />} />
         </Routes>
-      </main>
-      <Footer />
-    </Router>
+      </motion.main>
+    </AnimatePresence>
   );
 };
+
+const Shell: React.FC = () => {
+  useSmoothScroll();
+
+  return (
+    <>
+      <Nav />
+      <AnimatedRoutes />
+      <Footer />
+      <ChatDock />
+    </>
+  );
+};
+
+/**
+ * `reducedMotion="user"` makes every motion component honour the OS setting,
+ * so individual components never have to check it themselves.
+ */
+const App: React.FC = () => (
+  <MotionConfig reducedMotion="user">
+    <Router>
+      <Shell />
+    </Router>
+  </MotionConfig>
+);
 
 export default App;

@@ -1,0 +1,13 @@
+/* Each authored line gets its own mask so it can slide up from behind it. */
+.mask {
+  display: block;
+  overflow: hidden;
+  /* Descenders would otherwise be clipped by the mask edge. */
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+.line {
+  display: block;
+  will-change: transform;
+}

@@ -1,0 +1,11 @@
+.rule {
+  display: block;
+  height: 1px;
+  width: 100%;
+  background: var(--rule);
+  transform-origin: left center;
+  border: 0;
+}
+
+.strong { background: var(--rule-strong); }
+.inverse { background: var(--ink-surface-rule); }
