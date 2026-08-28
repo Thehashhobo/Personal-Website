@@ -1,0 +1,117 @@
+.row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 15rem) minmax(0, 1fr) auto 1.5rem;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding-block: clamp(1.1rem, 2.2vh, 1.6rem);
+  border-bottom: 1px solid var(--rule);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+/* The ink wash sweeps up from the baseline on hover. */
+.row::before {
+  content: "";
+  position: absolute;
+  inset: 0 calc(var(--gutter) * -0.4);
+  background: var(--paper-raised);
+  transform: scaleY(0);
+  transform-origin: bottom center;
+  transition: transform var(--dur-base) var(--ease-out);
+  z-index: -1;
+}
+
+.row:hover::before,
+.row:focus-visible::before {
+  transform: scaleY(1);
+  transform-origin: top center;
+}
+
+.index,
+.stack {
+  font-family: var(--font-mono);
+  font-size: var(--size-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+/* The title steps aside as the row opens up. */
+.row:hover .title { transform: translateX(0.5rem); }
+
+.tagline {
+  font-size: var(--size-small);
+  color: var(--ink-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chevron {
+  color: var(--ink-faint);
+  opacity: 0;
+  transform: translate3d(-6px, 6px, 0);
+  transition:
+    opacity var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+  align-self: center;
+}
+
+.row:hover .chevron,
+.row:focus-visible .chevron {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  color: var(--accent);
+}
+
+/* ---- cursor-trailing preview plate -------------------------------------- */
+
+.plate {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 230px;
+  height: 150px;
+  margin: -75px 0 0 -115px; /* centre on the pointer */
+  pointer-events: none;
+  z-index: 5;
+  overflow: hidden;
+  background: var(--paper-raised);
+  box-shadow: var(--shadow-lift);
+}
+
+.plate img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 1024px) {
+  .row { grid-template-columns: 2.75rem minmax(0, 1fr) auto; }
+  .tagline { display: none; }
+}
+
+@media (max-width: 640px) {
+  .row {
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    row-gap: 0.35rem;
+    align-items: center;
+  }
+  .stack { grid-column: 2; }
+  .chevron { display: none; }
+  .row:hover .title { transform: none; }
+}
+
+/* No cursor to follow, and the plate would fight touch scrolling. */
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .plate { display: none; }
+}

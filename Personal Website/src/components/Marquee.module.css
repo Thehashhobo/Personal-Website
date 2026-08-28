@@ -1,0 +1,66 @@
+.marquee {
+  --speed: 42s;
+  overflow: hidden;
+  border-block: 1px solid var(--rule);
+  padding-block: 1.1rem;
+  /* Fade the ends so the loop never shows a hard edge. */
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: slide var(--speed) linear infinite;
+}
+
+.marquee:hover .track { animation-play-state: paused; }
+
+.group {
+  display: flex;
+  align-items: center;
+  flex: none;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  padding-inline: clamp(0.75rem, 2vw, 1.5rem);
+  font-family: var(--font-mono);
+  font-size: var(--size-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+
+.item::after {
+  content: "";
+  width: 4px;
+  height: 4px;
+  background: var(--accent);
+  flex: none;
+}
+
+/* Two identical groups; shifting by exactly one makes the seam invisible. */
+@keyframes slide {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+/* Reduced motion: the band keeps drifting, by deliberate exception — it is a
+   slow, linear, single-axis loop with no travel toward the viewer, and it
+   pauses on hover. `overflow` stays hidden in every case, so the strip never
+   grows a scrollbar; the old fallback swapped the animation for an
+   `overflow-x: auto` scroller, which is what put one there.
+
+   Both properties need !important to outrank the global `*` motion reset in
+   styles/global.css, which otherwise collapses this to 0.01ms and one pass.
+   `.track` (0,1,0) beats `*` (0,0,0), so these win. */
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation-duration: var(--speed) !important;
+    animation-iteration-count: infinite !important;
+  }
+}

@@ -1,0 +1,180 @@
+.dock {
+  position: fixed;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: clamp(1rem, 3vw, 2rem);
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+}
+
+/* ---- trigger ------------------------------------------------------------ */
+
+.trigger {
+  font-family: var(--font-mono);
+  font-size: var(--size-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  background: var(--ink-surface);
+  color: var(--ink-surface-type);
+  padding: 0.95rem 1.25rem;
+  box-shadow: var(--shadow-lift);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.trigger:hover { transform: translateY(-2px); }
+
+/* One slow pulse to say the assistant is here, then it stops. */
+.nudge { animation: pulse 2.4s var(--ease-out) 3; }
+
+@keyframes pulse {
+  0%, 70%, 100% { transform: translateY(0); }
+  80% { transform: translateY(-5px); }
+  90% { transform: translateY(-2px); }
+}
+
+/* ---- panel -------------------------------------------------------------- */
+
+.panel {
+  width: min(370px, calc(100vw - 2rem));
+  height: min(480px, calc(100vh - 8rem));
+  display: flex;
+  flex-direction: column;
+  background: var(--paper-pure);
+  border: 1px solid var(--rule-strong);
+  box-shadow: var(--shadow-lift);
+  transform-origin: bottom right;
+  overflow: hidden;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--rule);
+  flex: none;
+}
+
+.headLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: var(--size-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.close { color: var(--ink-faint); padding: 0.25rem; }
+.close:hover { color: var(--ink); }
+
+/* ---- log ---------------------------------------------------------------- */
+
+.log {
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: var(--size-small);
+  line-height: 1.55;
+}
+
+.assistant {
+  color: var(--ink);
+  background: var(--paper-raised);
+  padding: 0.7rem 0.85rem;
+  max-width: 92%;
+  align-self: flex-start;
+}
+
+.user {
+  color: var(--ink-surface-type);
+  background: var(--ink-surface);
+  padding: 0.7rem 0.85rem;
+  max-width: 88%;
+  align-self: flex-end;
+}
+
+.typing { display: flex; gap: 5px; align-items: center; padding: 0.95rem 0.85rem; }
+
+.typing span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--ink-faint);
+  animation: blink 1.3s var(--ease-in-out) infinite;
+}
+
+.typing span:nth-child(2) { animation-delay: 0.18s; }
+.typing span:nth-child(3) { animation-delay: 0.36s; }
+
+@keyframes blink {
+  0%, 60%, 100% { opacity: 0.25; transform: translateY(0); }
+  30% { opacity: 1; transform: translateY(-3px); }
+}
+
+/* ---- suggestions -------------------------------------------------------- */
+
+.suggestions { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.25rem; }
+
+.suggestions button {
+  width: 100%;
+  text-align: left;
+  font-size: var(--size-small);
+  color: var(--ink-muted);
+  border: 1px solid var(--rule);
+  padding: 0.55rem 0.7rem;
+  transition:
+    border-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+
+.suggestions button:hover { border-color: var(--ink); color: var(--ink); }
+
+/* ---- composer ----------------------------------------------------------- */
+
+.composer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-top: 1px solid var(--rule);
+  padding: 0.6rem 0.6rem 0.6rem 1rem;
+  flex: none;
+}
+
+.composer input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: none;
+  outline: none;
+  font-size: var(--size-small);
+}
+
+.composer input::placeholder { color: var(--ink-faint); }
+
+.composer button {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  background: var(--ink-surface);
+  color: var(--ink-surface-type);
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+
+.composer button:disabled { opacity: 0.3; cursor: not-allowed; }

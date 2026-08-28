@@ -1,35 +1,75 @@
-import React from 'react';
-import './App.css';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Aboutpage from './pages/Aboutpage';
-import Resumepage from './pages/Resumepage';
-import Projectpage from './pages/Projectpage';
-import Contactpage from './pages/Contactpage';
+import React from "react";
+import { HashRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence, MotionConfig, motion } from "motion/react";
+import Nav from "./components/Nav";
+import Footer from "./components/Footer";
+import ChatDock from "./components/ChatDock";
+import Home from "./pages/Home";
+import Projects from "./pages/Projects";
+import Resume from "./pages/Resume";
+import Contact from "./pages/Contact";
+import { resetScroll, useSmoothScroll } from "./lib/useLenis";
+import { pageTransition } from "./lib/motion";
 
-import ScrollToTop from './components/ScrollToTop';
-import { BrowserRouter as Router, Routes, Route,} from 'react-router-dom';
-
-
-
-
-const App: React.FC = () => {
+/**
+ * Routes wrapped in a cross-fade.
+ *
+ * AnimatePresence needs a stable key per route and an explicit `location`,
+ * otherwise the outgoing tree re-renders with the new match and the exit
+ * animation plays against the wrong content. `mode="wait"` keeps the two pages
+ * from overlapping, which matters because both are full-bleed.
+ *
+ * Scroll is reset in onExitComplete rather than on pathname change: resetting
+ * eagerly would yank the outgoing page to the top while it is still visible.
+ */
+const AnimatedRoutes: React.FC = () => {
+  const location = useLocation();
 
   return (
-    <Router>
-      <ScrollToTop />
-      <Navbar />
-
-        <Routes>
-          <Route path="/" element={<Aboutpage />} />
-          <Route path="/resume" element={<Resumepage />} />
-          <Route path="/Projects" element={<Projectpage />} />
-          <Route path="/Contact" element={<Contactpage />} />
-          {/* <Route path="/trainings" element={<TrainingsPage />} /> */}
+    <AnimatePresence mode="wait" initial={false} onExitComplete={resetScroll}>
+      <motion.main
+        key={location.pathname}
+        variants={pageTransition}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+      >
+        <Routes location={location}>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/resume" element={<Resume />} />
+          <Route path="/contact" element={<Contact />} />
+          {/* Anything unrecognised lands on the index rather than a blank page. */}
+          <Route path="*" element={<Home />} />
         </Routes>
-        <Footer />
-    </Router>
+      </motion.main>
+    </AnimatePresence>
   );
 };
+
+const Shell: React.FC = () => {
+  useSmoothScroll();
+
+  return (
+    <>
+      <Nav />
+      <AnimatedRoutes />
+      <Footer />
+      <ChatDock />
+    </>
+  );
+};
+
+/**
+ * `reducedMotion="user"` makes every motion component honour the OS setting,
+ * so individual components never have to check it themselves.
+ */
+const App: React.FC = () => (
+  <MotionConfig reducedMotion="user">
+    <Router>
+      <Shell />
+    </Router>
+  </MotionConfig>
+);
 
 export default App;

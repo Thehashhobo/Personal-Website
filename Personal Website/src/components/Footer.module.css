@@ -1,26 +1,110 @@
-/* footer.module.css */
 .footer {
-    text-align: center;
-    background: #f9f9f9;
-    padding: 20px 30px;
-    position: relative;
-    width: 100%;
-    bottom: 0;
+  background: var(--ink-surface);
+  color: var(--ink-surface-type);
+  padding-block: clamp(3.5rem, 9vh, 7rem) 2rem;
+}
 
-  }
-  
-  .footerContent {
-    display: flex;
-    justify-content: center;
-    gap: 64px;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .footerContent {
-      flex-direction: column;
-      align-items: center;
-      gap: 13px;;
-    }
-  }
-  
+.inner {
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--size-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--ink-surface-type) 48%, transparent);
+  margin-bottom: 1.25rem;
+}
+
+/* ---- oversized mail link ------------------------------------------------ */
+
+.callout { margin-bottom: clamp(3rem, 8vh, 6rem); }
+
+.mailMask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+}
+
+.mail {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 6.5vw, 5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  word-break: break-word;
+  position: relative;
+  will-change: transform;
+}
+
+.mail::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0.08em;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.mail:hover::after,
+.mail:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* ---- columns ------------------------------------------------------------ */
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2.5rem 1.5rem;
+  padding-block: 2.5rem;
+  border-top: 1px solid var(--ink-surface-rule);
+}
+
+.col ul { display: flex; flex-direction: column; gap: 0.55rem; }
+
+.item {
+  font-size: var(--size-small);
+  color: color-mix(in srgb, var(--ink-surface-type) 78%, transparent);
+  transition: color var(--dur-fast) var(--ease-out);
+  display: inline-block;
+}
+
+a.item:hover { color: var(--ink-surface-type); }
+
+/* ---- baseline ----------------------------------------------------------- */
+
+.baseline {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--ink-surface-rule);
+  font-family: var(--font-mono);
+  font-size: var(--size-label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--ink-surface-type) 48%, transparent);
+}
+
+.baseline a { text-decoration: underline; text-underline-offset: 0.25em; }
+.baseline a:hover { color: var(--ink-surface-type); }
+
+@media (max-width: 860px) {
+  .columns { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 460px) {
+  .columns { grid-template-columns: 1fr; gap: 2rem; }
+}

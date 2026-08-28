@@ -1,41 +1,101 @@
 import React from "react";
-import { Layout, Typography, Space } from "antd";
-import { LinkedinFilled, GithubFilled, InstagramFilled, FacebookFilled } from "@ant-design/icons";
-import styles from "./footer.module.css"; // Import CSS module
+import { Link } from "react-router-dom";
+import { motion } from "motion/react";
+import { NAV, SITE, SOCIALS } from "../data/site";
+import { viewportOnce, EASE_OUT } from "../lib/motion";
+import styles from "./Footer.module.css";
 
-const { Footer } = Layout;
-const { Text, Link } = Typography;
+const YEAR = new Date().getFullYear();
 
-const AppFooter: React.FC = () => {
-  return (
-    <Footer className={styles.footer}>
-      <Space  align="center" className={styles.footerContent}>
-        <Space direction="vertical" size="small" className={styles.footerCopyright}>
-            <Text>© {new Date().getFullYear()} by Jerry W.</Text>
-            <Text>
-            Powered and secured by <Link href="https://pages.github.com/" target="_blank">Github Pages</Link>
-            </Text>
-        </Space>
-        <Space direction="vertical" align="center">
-          <Text strong>Call</Text>
-          <Text>778-251-6946</Text>
-        </Space>
-        <Space direction="vertical" align="center">
-          <Text strong>Write</Text>
-          <Text>Jerryja2015@gmail.com</Text>
-        </Space>
-        <Space direction="vertical" align="center">
-          <Text strong>Follow</Text>
-          <Space size="large">
-            <Link href="https://www.linkedin.com/in/jerry-wang-a763571a0/" aria-label="LinkedIn"><LinkedinFilled style={{ fontSize: 24 }} /></Link>
-            <Link href="https://github.com/Thehashhobo" aria-label="GitHub"><GithubFilled style={{ fontSize: 24 }} /></Link>
-            <Link href="https://www.instagram.com/jerry_w_02/" aria-label="Instagram"><InstagramFilled style={{ fontSize: 24 }} /></Link>
-            <Link href="https://www.facebook.com/profile.php?id=100016401705344" aria-label="Facebook"><FacebookFilled style={{ fontSize: 24 }} /></Link>
-          </Space>
-        </Space>
-      </Space>
-    </Footer>
-  );
-};
+/**
+ * Inverted closing block. The oversized mail link is the page's last and
+ * loudest call to action; everything below it is quiet metadata.
+ */
+const Footer: React.FC = () => (
+  <footer className={styles.footer}>
+    <div className={styles.inner}>
+      <div className={styles.callout}>
+        <span className={styles.label}>Get in touch</span>
+        <span className={styles.mailMask}>
+          <motion.a
+            href={`mailto:${SITE.email}`}
+            className={styles.mail}
+            initial={{ y: "110%" }}
+            whileInView={{ y: "0%" }}
+            viewport={viewportOnce}
+            transition={{ duration: 1, ease: EASE_OUT }}
+          >
+            {SITE.email}
+          </motion.a>
+        </span>
+      </div>
 
-export default AppFooter;
+      <div className={styles.columns}>
+        <div className={styles.col}>
+          <span className={styles.label}>Index</span>
+          <ul>
+            {NAV.map((item) => (
+              <li key={item.to}>
+                <Link to={item.to} className={styles.item}>
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className={styles.col}>
+          <span className={styles.label}>Elsewhere</span>
+          <ul>
+            {SOCIALS.map((s) => (
+              <li key={s.href}>
+                <a href={s.href} target="_blank" rel="noopener noreferrer" className={styles.item}>
+                  {s.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className={styles.col}>
+          <span className={styles.label}>Direct</span>
+          <ul>
+            <li>
+              <a href={SITE.phoneHref} className={styles.item}>
+                {SITE.phone}
+              </a>
+            </li>
+            <li>
+              <a href={SITE.resume} download={SITE.resumeFilename} className={styles.item}>
+                Résumé (PDF)
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div className={styles.col}>
+          <span className={styles.label}>Based in</span>
+          <ul>
+            <li className={styles.item}>{SITE.location}</li>
+            <li className={styles.item}>English &amp; Mandarin</li>
+            <li className={styles.item}>Intermediate French</li>
+          </ul>
+        </div>
+      </div>
+
+      <div className={styles.baseline}>
+        <span>
+          © {YEAR} {SITE.name}
+        </span>
+        <span>
+          Built with React and Vite · Hosted on{" "}
+          <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">
+            GitHub Pages
+          </a>
+        </span>
+      </div>
+    </div>
+  </footer>
+);
+
+export default Footer;
