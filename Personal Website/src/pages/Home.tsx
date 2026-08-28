@@ -110,14 +110,33 @@ const Home: React.FC = () => {
 
         <div className={styles.profile}>
           <div className={styles.portrait}>
+            {/* The plate carries the 3D hover. It has to wrap the well rather
+                than be it: Motion leaves an inline clip-path behind after the
+                reveal, and clip-path would clip the elevation shadow away.
+
+                It also carries the scroll trigger, because a well clipped to
+                inset(100%) has zero visible area and IntersectionObserver
+                would never report it in view — the reveal would never fire.
+                The plate keeps its box either way, so it always fires; the
+                well follows through variant propagation. */}
             <motion.div
-              className={styles.portraitWell}
-              initial={{ clipPath: "inset(100% 0 0 0)" }}
-              whileInView={{ clipPath: "inset(0% 0 0 0)" }}
+              className={styles.portraitPlate}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 1.2, ease: EASE_OUT }}
             >
-              <img src={portrait} alt={SITE.name} />
+              <motion.div
+                className={styles.portraitWell}
+                variants={{
+                  hidden: { clipPath: "inset(100% 0 0 0)" },
+                  visible: {
+                    clipPath: "inset(0% 0 0 0)",
+                    transition: { duration: 1.2, ease: EASE_OUT },
+                  },
+                }}
+              >
+                <img src={portrait} alt={SITE.name} />
+              </motion.div>
             </motion.div>
             <span className={styles.portraitCaption}>
               {SITE.name} — {SITE.location}

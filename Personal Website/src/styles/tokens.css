@@ -64,6 +64,9 @@
 
   /* --- Depth — used sparingly; this design leans on rules, not shadow --- */
   --shadow-lift: 0 1rem 3rem -1rem rgba(17, 17, 16, 0.22);
+  /* Deeper cast for an element lifted off the page in 3D, where the shadow is
+     what sells the elevation. */
+  --shadow-pop: 0 2.25rem 4.5rem -1.25rem rgba(17, 17, 16, 0.38);
 
   --nav-h: 72px;
 }

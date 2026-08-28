@@ -16,18 +16,27 @@ const Footer: React.FC = () => (
     <div className={styles.inner}>
       <div className={styles.callout}>
         <span className={styles.label}>Get in touch</span>
-        <span className={styles.mailMask}>
+        {/* The mask carries the scroll trigger. The link starts at y:110%,
+            which parks it entirely outside the mask's overflow — zero clipped
+            area, so IntersectionObserver never calls it visible and the reveal
+            never fires. The mask itself is never clipped. */}
+        <motion.span
+          className={styles.mailMask}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+        >
           <motion.a
             href={`mailto:${SITE.email}`}
             className={styles.mail}
-            initial={{ y: "110%" }}
-            whileInView={{ y: "0%" }}
-            viewport={viewportOnce}
-            transition={{ duration: 1, ease: EASE_OUT }}
+            variants={{
+              hidden: { y: "110%" },
+              visible: { y: "0%", transition: { duration: 1, ease: EASE_OUT } },
+            }}
           >
             {SITE.email}
           </motion.a>
-        </span>
+        </motion.span>
       </div>
 
       <div className={styles.columns}>
