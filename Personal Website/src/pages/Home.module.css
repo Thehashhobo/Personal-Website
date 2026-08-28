@@ -96,16 +96,42 @@
   align-items: start;
 }
 
-.portrait { position: sticky; top: calc(var(--nav-h) + 3rem); }
+/* The portrait sits in a perspective field so hover can swing the plate out of
+   the page rather than just scaling it flat. */
+.portrait {
+  position: sticky;
+  top: calc(var(--nav-h) + 3rem);
+  perspective: 1300px;
+}
 
-/* Matches the photo's native 801×1200, so `cover` has nothing to trim.
-   A 4/5 well cropped 8.3% off each end, taking the top of the head with it. */
+/* Transform and shadow live on the plate, never on the well: Motion leaves an
+   inline `clip-path: inset(0% 0 0 0)` behind once the reveal finishes, and
+   clip-path clips outer box-shadows — the elevation would silently vanish. */
+.portraitPlate {
+  position: relative;
+  margin-bottom: 0.85rem;
+  transform-origin: 50% 50%;
+  transition:
+    transform var(--dur-slow) var(--ease-out),
+    box-shadow var(--dur-slow) var(--ease-out);
+}
+
+/* Rightmost function applies first: the plate rotates in place, then travels
+   toward the viewer along the parent's Z. At 1300px of perspective the 48px of
+   travel is worth about 1.04 of apparent scale on its own. */
+.portraitPlate:hover {
+  transform: translateZ(48px) rotateY(-10deg) rotateX(4deg);
+  box-shadow: var(--shadow-pop);
+}
+
+/* Shorter than the photo's native 2:3 (801×1200), so `cover` has to trim ~11%
+   of its height. `object-position` below steers that trim almost entirely to
+   the bottom, taking torso rather than the top of the head. */
 .portraitWell {
   position: relative;
-  aspect-ratio: 2 / 3;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
   background: var(--paper-raised);
-  margin-bottom: 0.85rem;
 }
 
 /* No over-scale and no vertical drift: parallax needs the image taller than
@@ -115,12 +141,91 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(1) contrast(1.04);
-  transition: filter var(--dur-slow) var(--ease-out);
+  /* Anchored high: of the 11% the shorter well has to cut, this leaves 0.9%
+     off the top and 10.1% off the bottom. Raise the second number toward 50%
+     to recentre; lower it to 0% to guarantee the top of the frame survives. */
+  object-position: 50% 8%;
+  /* Pivot near the face rather than the frame centre, so the push-in reads as
+     stepping toward the subject instead of inflating the whole plate. */
+  transform-origin: 50% 38%;
+  transition:
+    transform var(--dur-slow) var(--ease-out),
+    filter var(--dur-slow) var(--ease-out);
 }
 
-/* Colour arrives on hover — restraint, then reward. */
-.portraitWell:hover img { filter: grayscale(0) contrast(1); }
+/* ---- hover: flip, frame, sheen ------------------------------------------
+   Everything resolves on one curve — the plate swings out of the page, a
+   gallery hairline draws itself inside the edge, a light sweeps across, and
+   the photo pushes in behind the glass. */
+
+/* Inset hairline, settling inward from slightly oversized. */
+.portraitWell::before {
+  content: "";
+  position: absolute;
+  inset: clamp(0.55rem, 1.5vw, 1rem);
+  z-index: 2;
+  border: 1px solid rgba(245, 243, 239, 0.72);
+  opacity: 0;
+  transform: scale(1.035);
+  pointer-events: none;
+  transition:
+    opacity var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out);
+}
+
+/* The sweep. Overscaled vertically and rotated so the band crosses corner to
+   corner; the well's overflow clips it to a clean edge. */
+.portraitWell::after {
+  content: "";
+  position: absolute;
+  top: -60%;
+  bottom: -60%;
+  left: -30%;
+  width: 26%;
+  z-index: 3;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 253, 250, 0.4),
+    transparent
+  );
+  opacity: 0;
+  transform: rotate(14deg);
+  pointer-events: none;
+}
+
+/* The photo now moves less than before — the plate's own travel carries most
+   of the push, and doubling it read as a zoom. */
+.portraitPlate:hover .portraitWell img {
+  transform: scale(1.03);
+  filter: saturate(1.06) contrast(1.02);
+}
+
+.portraitPlate:hover .portraitWell::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.portraitPlate:hover .portraitWell::after {
+  animation: sheen 1.05s var(--ease-out);
+}
+
+@keyframes sheen {
+  0%   { opacity: 0; transform: rotate(14deg) translateX(0); }
+  14%  { opacity: 1; }
+  100% { opacity: 0; transform: rotate(14deg) translateX(530%); }
+}
+
+/* The caption answers the plate, picking up the accent as it lifts — and steps
+   down out of its way. The tilted plate paints above the caption (a transform
+   makes it a positioned stacking context, so DOM order stops protecting the
+   span) and its bottom edge drops 10–16px on hover, against a resting gap of
+   only 0.85rem. This roughly doubles the gap for the duration. */
+.portraitPlate:hover + .portraitCaption {
+  color: var(--accent);
+  letter-spacing: 0.21em;
+  transform: translateY(0.9rem);
+}
 
 .portraitCaption {
   display: block;
@@ -129,6 +234,27 @@
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   color: var(--ink-faint);
+  transition:
+    color var(--dur-base) var(--ease-out),
+    letter-spacing var(--dur-base) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out);
+}
+
+/* Reduced motion: this is hover-initiated and never plays on its own, so it
+   survives the global `*` reset in styles/global.css — which would otherwise
+   collapse it to 0.01ms and make the sheen invisible. Class selectors outrank
+   `*` and `*::before`, so these win. Matches the marquee exemption. */
+@media (prefers-reduced-motion: reduce) {
+  .portraitPlate,
+  .portraitWell img,
+  .portraitWell::before,
+  .portraitCaption {
+    transition-duration: var(--dur-base) !important;
+  }
+  .portraitPlate:hover .portraitWell::after {
+    animation-duration: 1.05s !important;
+    animation-iteration-count: 1 !important;
+  }
 }
 
 .profileBody { min-width: 0; }

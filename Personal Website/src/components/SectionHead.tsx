@@ -24,7 +24,9 @@ const SectionHead: React.FC<Props> = ({ index, label, lines, note }) => (
 
     <Rule className={styles.rule} />
 
-    <div className={styles.row}>
+    {/* Without a standfirst there is no second column to hold open, so the
+        heading takes the full measure rather than sitting in 58% of it. */}
+    <div className={`${styles.row} ${note ? "" : styles.rowSolo}`}>
       <SplitLines as="h2" lines={lines} className={styles.title} each={0.08} />
       {note && (
         <Reveal className={styles.note} delay={0.15}>

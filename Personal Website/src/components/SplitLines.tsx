@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "motion/react";
-import { maskedLine, viewportOnce } from "../lib/motion";
+import { maskedLine, stagger, viewportOnce } from "../lib/motion";
 import styles from "./SplitLines.module.css";
 
 type Props = {
@@ -23,6 +23,12 @@ type Props = {
  * revealed by the page rather than flown in over it. The whole phrase is
  * exposed to assistive tech as a single string via aria-label; the animated
  * spans are hidden from it.
+ *
+ * The scroll trigger lives on the heading, never on the lines themselves: a
+ * line parked at y:110% sits entirely outside its mask, so its clipped area is
+ * zero and IntersectionObserver would never call it visible — the reveal would
+ * wait forever. The heading is never clipped, so it always fires; the lines
+ * follow it through variant propagation.
  */
 export const SplitLines: React.FC<Props> = ({
   lines,
@@ -30,22 +36,18 @@ export const SplitLines: React.FC<Props> = ({
   delay = 0,
   each = 0.09,
   immediate = false,
-  as: Tag = "h2",
+  as = "h2",
 }) => {
-  const animation = immediate
+  const Tag = motion[as];
+  const trigger = immediate
     ? { initial: "hidden" as const, animate: "visible" as const }
     : { initial: "hidden" as const, whileInView: "visible" as const, viewport: viewportOnce };
 
   return (
-    <Tag className={className} aria-label={lines.join(" ")}>
+    <Tag className={className} aria-label={lines.join(" ")} variants={stagger(each, delay)} {...trigger}>
       {lines.map((line, i) => (
         <span key={i} className={styles.mask} aria-hidden="true">
-          <motion.span
-            className={styles.line}
-            variants={maskedLine}
-            transition={{ delay: delay + i * each }}
-            {...animation}
-          >
+          <motion.span className={styles.line} variants={maskedLine}>
             {line}
           </motion.span>
         </span>

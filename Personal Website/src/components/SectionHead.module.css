@@ -20,16 +20,29 @@
 
 .rule { margin-bottom: clamp(1.5rem, 4vh, 2.75rem); }
 
+/* 2.2fr rather than the old 1.4fr: at this size the heading needs the room,
+   and the standfirst never wanted more than its 42ch anyway. */
 .row {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr);
   gap: clamp(1.5rem, 4vw, 4rem);
   align-items: end;
 }
 
+.rowSolo { grid-template-columns: minmax(0, 1fr); }
+
+/* Well above --size-h1, which the closing CTA still uses: these mastheads
+   carry a whole section and were reading as subheads. They now sit just under
+   the hero's --size-display, which stays the largest type on the site.
+
+   The binding constraint is "worth your time", the one line that shares its
+   row with a standfirst. Gutter, gap and font all scale with vw, so the fit
+   holds at every width: the 2.2fr column tops out at 11.57vw of display type,
+   and 11vw leaves that a 5% margin. Lines that overflow are clipped by their
+   mask rather than wrapped, so there is no graceful failure to fall back on. */
 .title {
   font-family: var(--font-display);
-  font-size: var(--size-h1);
+  font-size: clamp(3.25rem, 11vw, 9.5rem);
   line-height: 0.98;
   letter-spacing: -0.025em;
 }
