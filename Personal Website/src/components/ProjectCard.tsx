@@ -6,7 +6,7 @@ import ProjectMedia from "./ProjectMedia";
 import { rise } from "../lib/motion";
 import styles from "./ProjectCard.module.css";
 
-type Props = { project: Project; index: string };
+type Props = { project: Project; index: string; wide?: boolean };
 
 /**
  * Compact work card for the home page grid.
@@ -18,7 +18,7 @@ type Props = { project: Project; index: string };
  * Work with no public URL keeps the same shape but renders as a plain block,
  * so nothing invites a click that goes nowhere.
  */
-const ProjectCard: React.FC<Props> = ({ project, index }) => {
+const ProjectCard: React.FC<Props> = ({ project, index, wide }) => {
   const external = project.link?.startsWith("http");
 
   const body = (
@@ -50,7 +50,7 @@ const ProjectCard: React.FC<Props> = ({ project, index }) => {
   );
 
   return (
-    <motion.article variants={rise} className={styles.card}>
+    <motion.article variants={rise} className={`${styles.card} ${wide ? styles.wide : ""}`}>
       {project.link ? (
         <a
           className={styles.link}

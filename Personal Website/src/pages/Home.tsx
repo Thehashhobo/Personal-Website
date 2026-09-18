@@ -174,13 +174,19 @@ const Home: React.FC = () => {
         <SectionHead
           index="02"
           label="Selected work"
-          lines={["Four projects", "worth your time"]}
-          note="The product I run today, a client platform rebuilt around the wrong brief, an app I validated before writing it, and a rendering problem I could not put down."
+          lines={["Five projects", "worth your time"]}
+          note="The product I run today, a chapter platform that funds itself, a client platform rebuilt around the wrong brief, an app I validated before writing it, and a rendering problem I could not put down."
         />
 
         <RevealGroup className={styles.workGrid} each={0.1}>
-          {FEATURED.map((project) => (
-            <ProjectCard key={project.id} project={project} index={numberOf(project)} />
+          {FEATURED.map((project, i) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              index={numberOf(project)}
+              // An odd card out takes the whole row instead of leaving a hole.
+              wide={FEATURED.length % 2 === 1 && i === FEATURED.length - 1}
+            />
           ))}
         </RevealGroup>
 

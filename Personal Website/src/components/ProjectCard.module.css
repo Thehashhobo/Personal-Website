@@ -1,5 +1,13 @@
 .card { min-width: 0; }
 
+/* Spans the two-column home grid; a shallower well keeps it from towering. */
+.wide { grid-column: 1 / -1; }
+.wide .well { aspect-ratio: 21 / 8; }
+
+@media (max-width: 900px) {
+  .wide .well { aspect-ratio: 16 / 11; }
+}
+
 .link { display: block; }
 
 /* ---- image well --------------------------------------------------------- */

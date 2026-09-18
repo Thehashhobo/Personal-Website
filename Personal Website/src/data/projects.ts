@@ -79,6 +79,26 @@ export const PROJECTS: Project[] = [
     featured: true,
   },
   {
+    id: "du-toronto",
+    title: "DU Toronto",
+    tagline: "Chapter platform funded by its own storefront",
+    description:
+      "The official site of the Delta Upsilon Toronto chapter. The chapter needed to fund itself and stay connected to alumni — a brochure site would have done neither, so the build led with donations and merchandise instead of history and photos.",
+    image: c14,
+    technologies: ["Next.js", "TypeScript", "TailwindCSS", "Supabase", "Stripe", "Vercel"],
+    points: [
+      "Scoped the platform around the chapter's real constraint — recurring revenue — rather than the brochure site originally asked for.",
+      "Led development and mentored two developers alongside a UI/UX designer, sequencing work so the storefront was live before recruitment season.",
+      "Built the store on Supabase for inventory and Stripe for payments, with analytics showing which channels actually brought donors in.",
+      "Deployed on Vercel with CI/CD so chapter officers could keep it current without a developer in the loop.",
+    ],
+    metric: { value: "2", label: "developers mentored" },
+    role: "Technical lead",
+    link: "https://du-toronto-webpage.vercel.app/",
+    category: "current",
+    featured: true,
+  },
+  {
     id: "colossal-carriers",
     title: "Colossal Carriers",
     tagline: "Freight operator's platform, rebuilt around the hiring bottleneck",
@@ -138,25 +158,6 @@ export const PROJECTS: Project[] = [
     extraLinkLabel: "Version 2",
     category: "personal",
     featured: true,
-  },
-  {
-    id: "du-toronto",
-    title: "DU Toronto",
-    tagline: "Chapter platform funded by its own storefront",
-    description:
-      "The official site of the Delta Upsilon Toronto chapter. The chapter needed to fund itself and stay connected to alumni — a brochure site would have done neither, so the build led with donations and merchandise instead of history and photos.",
-    image: c14,
-    technologies: ["Next.js", "TypeScript", "TailwindCSS", "Supabase", "Stripe", "Vercel"],
-    points: [
-      "Scoped the platform around the chapter's real constraint — recurring revenue — rather than the brochure site originally asked for.",
-      "Led development and mentored two developers alongside a UI/UX designer, sequencing work so the storefront was live before recruitment season.",
-      "Built the store on Supabase for inventory and Stripe for payments, with analytics showing which channels actually brought donors in.",
-      "Deployed on Vercel with CI/CD so chapter officers could keep it current without a developer in the loop.",
-    ],
-    metric: { value: "2", label: "developers mentored" },
-    role: "Technical lead",
-    link: "https://du-toronto-webpage.vercel.app/",
-    category: "current",
   },
   {
     id: "ocean-wave",
